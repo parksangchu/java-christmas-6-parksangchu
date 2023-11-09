@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class Order {
     private static final String UNIT = "개";
-    private static final int MIN_COUNT = 1;
+    private static final int MIN_ORDER_COUNT = 1;
     private final String menuName;
     private final int count;
 
@@ -20,6 +20,15 @@ public class Order {
     public int calculateByMenu() {
         Menu menu = Menu.from(menuName);
         return menu.getPrice() * count;
+    }
+
+    public boolean isBeverage() {
+        Menu menu = Menu.from(menuName);
+        return menu.getType().equals("음료");
+    }
+
+    public int getCount() {
+        return count;
     }
 
     @Override
@@ -38,7 +47,7 @@ public class Order {
     }
 
     private void validateCount(int count) {
-        if (count < MIN_COUNT) {
+        if (count < MIN_ORDER_COUNT) {
             throw new IllegalArgumentException(INVALID_ORDER.getMessage());
         }
     }
