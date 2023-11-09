@@ -2,6 +2,8 @@ package christmas.domain;
 
 import static christmas.global.Error.INVALID_ORDER;
 
+import java.util.Objects;
+
 public class Order {
     private static final String UNIT = "개";
     private final String menuName;
@@ -33,4 +35,19 @@ public class Order {
         return Menu.from(menu) == null;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Order order)) {
+            return false;
+        }
+        return Objects.equals(menuName, order.menuName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(menuName);
+    }
 }
