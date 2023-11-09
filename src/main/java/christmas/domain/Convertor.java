@@ -24,9 +24,9 @@ public class Convertor {
     private static Order convertToOrder(String input) {
         validatePattern(input);
         String[] orderGroup = input.split(ORDER_DELIMITER);
-        String menu = orderGroup[MENU_INDEX];
+        String menuName = orderGroup[MENU_INDEX];
         int count = Integer.parseInt(orderGroup[COUNT_INDEX]);
-        return new Order(menu, count);
+        return new Order(menuName, count);
     }
 
     private static void validatePattern(String input) {
