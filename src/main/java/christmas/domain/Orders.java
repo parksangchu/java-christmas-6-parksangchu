@@ -12,11 +12,11 @@ public class Orders {
 
     @Override
     public String toString() {
-        String output = "";
+        StringBuilder output = new StringBuilder();
         for (Order order : orders) {
-            output += order.toString() + "\n";
+            output.append(order.toString()).append("\n");
         }
-        return output;
+        return output.toString();
     }
 
     public int calculateTotalAmount() {
