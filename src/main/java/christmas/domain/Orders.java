@@ -10,4 +10,12 @@ public class Orders {
         this.orders = orders;
     }
 
+    @Override
+    public String toString() {
+        String output = "";
+        for (Order order : orders) {
+            output += order.toString() + "\n";
+        }
+        return output;
+    }
 }
