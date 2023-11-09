@@ -11,6 +11,7 @@ import static christmas.view.Notice.TOTAL_PAYMENT_AMOUNT;
 import static christmas.view.Notice.WELCOME;
 
 import christmas.domain.Date;
+import christmas.domain.Orders;
 
 public class OutputView {
     public static void printWelcome() {
@@ -19,17 +20,11 @@ public class OutputView {
 
     public static void printPreview(Date date) {
         System.out.printf(PREVIEW.getMessage(), date);
-        printOrderMenu();
-        printTotalOrderAmount();
-        printGift();
-        printBenefitList();
-        printTotalBenefitAmount();
-        printPaymentAmount();
-        printEventBadge();
     }
 
-    public static void printOrderMenu() {
+    public static void printOrders(Orders orders) {
         System.out.println(ORDER_MENU.getMessage());
+        System.out.println(orders);
     }
 
     public static void printTotalOrderAmount() {
