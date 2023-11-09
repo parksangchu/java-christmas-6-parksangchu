@@ -1,6 +1,6 @@
 package christmas.domain;
 
-public enum Dessert {
+public enum Dessert implements Menu {
     CHOCOLATE_CAKE("초코케이크", 15_000),
     ICE_CREAM("아이스크림", 5_000);
 

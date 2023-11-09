@@ -1,4 +1,4 @@
 package christmas.domain;
 
-public class Date {
+public class Date implements Menu {
 }

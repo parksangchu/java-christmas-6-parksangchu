@@ -1,6 +1,6 @@
 package christmas.domain;
 
-public enum Appetizer {
+public enum Appetizer implements Menu {
     MUSHROOM_SOUP("양송이수프", 6_000),
     TAPAS("타파스", 5_500),
     CAESAR_SALAD("시저샐러드", 8_000);
