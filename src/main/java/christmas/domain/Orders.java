@@ -18,4 +18,7 @@ public class Orders {
         }
         return output;
     }
+
+    public void calculateTotalAmount() {
+    }
 }
