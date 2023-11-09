@@ -10,13 +10,15 @@ import static christmas.view.Notice.TOTAL_ORDER_AMOUNT_BEFORE_DISCOUNT;
 import static christmas.view.Notice.TOTAL_PAYMENT_AMOUNT;
 import static christmas.view.Notice.WELCOME;
 
+import christmas.domain.Date;
+
 public class OutputView {
     public static void printWelcome() {
         System.out.println(WELCOME.getMessage());
     }
 
-    public static void printPreview() {
-        System.out.println(PREVIEW.getMessage());
+    public static void printPreview(Date date) {
+        System.out.printf(PREVIEW.getMessage(), date);
         printOrderMenu();
         printTotalOrderAmount();
         printGift();
@@ -26,31 +28,31 @@ public class OutputView {
         printEventBadge();
     }
 
-    private static void printOrderMenu() {
+    public static void printOrderMenu() {
         System.out.println(ORDER_MENU.getMessage());
     }
 
-    private static void printTotalOrderAmount() {
+    public static void printTotalOrderAmount() {
         System.out.println(TOTAL_ORDER_AMOUNT_BEFORE_DISCOUNT.getMessage());
     }
 
-    private static void printGift() {
+    public static void printGift() {
         System.out.println(GIFT.getMessage());
     }
 
-    private static void printBenefitList() {
+    public static void printBenefitList() {
         System.out.println(BENEFIT_LIST.getMessage());
     }
 
-    private static void printTotalBenefitAmount() {
+    public static void printTotalBenefitAmount() {
         System.out.println(TOTAL_BENEFIT_AMOUNT.getMessage());
     }
 
-    private static void printPaymentAmount() {
+    public static void printPaymentAmount() {
         System.out.println(TOTAL_PAYMENT_AMOUNT.getMessage());
     }
 
-    private static void printEventBadge() {
+    public static void printEventBadge() {
         System.out.println(EVENT_BADGE.getMessage());
     }
 }
