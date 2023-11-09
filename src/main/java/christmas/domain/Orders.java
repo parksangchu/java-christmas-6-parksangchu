@@ -19,6 +19,9 @@ public class Orders {
         return output;
     }
 
-    public void calculateTotalAmount() {
+    public int calculateTotalAmount() {
+        return orders.stream()
+                .mapToInt(Order::calculateByMenu)
+                .sum();
     }
 }
