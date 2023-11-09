@@ -14,27 +14,27 @@ public enum Menu {
     RED_WINE("레드와인", 60_000, "음료"),
     CHAMPAGNE("샴페인", 25_000, "음료");
 
-    private final String menu;
+    private final String menuName;
     private final int price;
     private final String type;
 
-    Menu(String menu, int price, String type) {
-        this.menu = menu;
+    Menu(String menuName, int price, String type) {
+        this.menuName = menuName;
         this.price = price;
         this.type = type;
     }
 
-    public static Menu from(String input) {
-        for (Menu name : values()) {
-            if (name.getMenu().equals(input)) {
-                return name;
+    public static Menu from(String menuName) {
+        for (Menu menu : values()) {
+            if (menu.getMenuName().equals(menuName)) {
+                return menu;
             }
         }
         return null;
     }
 
-    public String getMenu() {
-        return menu;
+    public String getMenuName() {
+        return menuName;
     }
 
     public int getPrice() {
