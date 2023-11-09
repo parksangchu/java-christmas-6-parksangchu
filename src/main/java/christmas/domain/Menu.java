@@ -24,6 +24,15 @@ public enum Menu {
         this.type = type;
     }
 
+    public static Menu from(String input) {
+        for (Menu name : values()) {
+            if (name.getMenu().equals(input)) {
+                return name;
+            }
+        }
+        return null;
+    }
+
     public String getMenu() {
         return menu;
     }
