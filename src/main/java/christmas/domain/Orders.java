@@ -1,11 +1,13 @@
 package christmas.domain;
 
-import java.util.EnumMap;
+import java.util.List;
 
 public class Orders {
-    private EnumMap order;
+    private List<Order> orders;
 
-    public Orders(String s) {
 
+    public Orders(List<Order> orders) {
+        this.orders = orders;
     }
+
 }
