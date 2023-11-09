@@ -14,6 +14,10 @@ import christmas.domain.Date;
 import christmas.domain.Orders;
 
 public class OutputView {
+    public static void printError(Exception e) {
+        System.out.println(e.getMessage());
+    }
+
     public static void printWelcome() {
         System.out.println(WELCOME.getMessage());
     }
