@@ -36,7 +36,7 @@ public class OutputView {
 
     public static void printTotalOrderAmount(int totalAmount) {
         System.out.println(TOTAL_ORDER_AMOUNT.getMessage());
-        System.out.println(totalAmount + MONEY_UNIT);
+        System.out.printf("%,d%s%n", totalAmount, MONEY_UNIT);
     }
 
     public static void printGift() {
