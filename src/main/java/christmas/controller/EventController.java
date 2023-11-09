@@ -11,9 +11,10 @@ public class EventController {
         OutputView.printWelcome();
         Date date = createDate();
         Orders orders = createOrders();
+        int totalAmount = orders.calculateTotalAmount();
         OutputView.printPreview(date);
         OutputView.printOrders(orders);
-        OutputView.printTotalOrderAmount();
+        OutputView.printTotalOrderAmount(totalAmount);
         OutputView.printGift();
         OutputView.printBenefitList();
         OutputView.printTotalBenefitAmount();

@@ -6,7 +6,7 @@ import static christmas.view.Notice.GIFT;
 import static christmas.view.Notice.ORDER_MENU;
 import static christmas.view.Notice.PREVIEW;
 import static christmas.view.Notice.TOTAL_BENEFIT_AMOUNT;
-import static christmas.view.Notice.TOTAL_ORDER_AMOUNT_BEFORE_DISCOUNT;
+import static christmas.view.Notice.TOTAL_ORDER_AMOUNT;
 import static christmas.view.Notice.TOTAL_PAYMENT_AMOUNT;
 import static christmas.view.Notice.WELCOME;
 
@@ -14,6 +14,9 @@ import christmas.domain.Date;
 import christmas.domain.Orders;
 
 public class OutputView {
+    public static final String MONEY_UNIT = "원";
+    public static final String NO_DATA = "없음";
+
     public static void printError(Exception e) {
         System.out.println(e.getMessage());
     }
@@ -31,8 +34,9 @@ public class OutputView {
         System.out.println(orders);
     }
 
-    public static void printTotalOrderAmount() {
-        System.out.println(TOTAL_ORDER_AMOUNT_BEFORE_DISCOUNT.getMessage());
+    public static void printTotalOrderAmount(int totalAmount) {
+        System.out.println(TOTAL_ORDER_AMOUNT.getMessage());
+        System.out.println(totalAmount + MONEY_UNIT);
     }
 
     public static void printGift() {
