@@ -8,6 +8,7 @@ import static christmas.domain.Event.WEEKEND;
 
 import java.util.EnumMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Benefit {
     private static final int LOWER_LIMIT_AMOUNT_FOR_BENEFIT = 10_000;
@@ -30,9 +31,10 @@ public class Benefit {
             benefits.put(WEEKEND, calculateWeekendDiscount(orders, date));
             benefits.put(SPECIAL, calculateSpecialDiscount(date));
             benefits.put(GIFT, calculateGiftAmount(orders));
-            benefits.values()
-                    .remove(0);
-            return benefits;
+            return benefits.entrySet()
+                    .stream()
+                    .filter(benefit -> benefit.getValue() != 0)
+                    .collect(Collectors.toMap(benefit -> benefit.getKey(), benefit -> benefit.getValue()));
         }
         return null;
     }

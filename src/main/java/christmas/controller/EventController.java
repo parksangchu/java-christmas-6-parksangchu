@@ -17,14 +17,14 @@ public class EventController {
         int totalOrderAmount = orders.calculateTotalAmount();
         Map<Event, Integer> benefits = Benefit.toBenefits(orders, date);
         int totalBenefit = Benefit.calculateTotalBenefit(benefits);
-        int totalPaymentAmount = totalOrderAmount - totalBenefit;
+        int PaymentAmount = orders.calculatePaymentAmount(totalOrderAmount, totalBenefit);
         OutputView.printPreview(date);
         OutputView.printOrders(orders);
         OutputView.printTotalOrderAmount(totalOrderAmount);
         OutputView.printGift(orders.hasGift());
         OutputView.printBenefitDetail(benefits);
         OutputView.printTotalBenefitAmount(totalBenefit);
-        OutputView.printPaymentAmount(totalPaymentAmount);
+        OutputView.printPaymentAmount(PaymentAmount);
         OutputView.printEventBadge();
     }
 
