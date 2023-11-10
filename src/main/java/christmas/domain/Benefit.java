@@ -21,35 +21,35 @@ public class Benefit {
         return 0;
     }
 
-    private static int calculateWeekdayDiscount(Orders orders, Date date) {
-        if (!date.isWeekend()) {
-            return orders.countDesserts() * UNIT_OF_WEEKDAY_DISCOUNT;
-        }
-        return 0;
-    }
-
-    private static int calculateWeekendDiscount(Orders orders, Date date) {
-        if (date.isWeekend()) {
-            return orders.countMains() * UNIT_OF_WEEKEND_DISCOUNT;
-        }
-        return 0;
-    }
-
-    private static int calculateDDayDiscount(Date date) {
+    public static int calculateDDayDiscount(Date date) {
         if (date.isDayBeforeChristmas()) {
             return INIT_OF_D_DAY_DISCOUNT + ((date.getValue() - 1) * UNIT_OF_D_DAY_DISCOUNT);
         }
         return 0;
     }
 
-    private static int calculateSpecialDiscount(Date date) {
+    public static int calculateWeekdayDiscount(Orders orders, Date date) {
+        if (!date.isWeekend()) {
+            return orders.countDesserts() * UNIT_OF_WEEKDAY_DISCOUNT;
+        }
+        return 0;
+    }
+
+    public static int calculateWeekendDiscount(Orders orders, Date date) {
+        if (date.isWeekend()) {
+            return orders.countMains() * UNIT_OF_WEEKEND_DISCOUNT;
+        }
+        return 0;
+    }
+
+    public static int calculateSpecialDiscount(Date date) {
         if (date.isStarDay()) {
             return SPECIAL_DISCOUNT_AMOUNT;
         }
         return 0;
     }
 
-    private static int calculateGiftAmount(Orders orders) {
+    public static int calculateGiftAmount(Orders orders) {
         if (orders.hasGift()) {
             return CHAMPAGNE.getPrice();
         }
