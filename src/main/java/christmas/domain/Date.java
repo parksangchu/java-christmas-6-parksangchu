@@ -15,7 +15,7 @@ public class Date {
         this.value = value;
     }
 
-    public DayOfWeek ofWeek() {
+    public DayOfWeek createDayofWeek() {
         LocalDate localDate = LocalDate.of(2023, 12, value);
         return localDate.getDayOfWeek();
     }
