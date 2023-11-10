@@ -1,14 +1,14 @@
 package christmas.domain;
 
-import static christmas.domain.Menu.CHAMPAGNE;
+import static christmas.domain.Discounts.CHRISTMAS_D_DAY;
+import static christmas.domain.Discounts.SPECIAL;
+import static christmas.domain.Discounts.WEEKDAY;
+import static christmas.domain.Discounts.WEEKEND;
+import static christmas.domain.Menus.CHAMPAGNE;
 
 public class Benefit {
     private static final int LOWER_LIMIT_AMOUNT_FOR_BENEFIT = 10_000;
-    private static final int INIT_OF_D_DAY_DISCOUNT = 1_000;
     private static final int UNIT_OF_D_DAY_DISCOUNT = 100;
-    private static final int UNIT_OF_WEEKDAY_DISCOUNT = 2_023;
-    private static final int UNIT_OF_WEEKEND_DISCOUNT = 2_023;
-    private static final int SPECIAL_DISCOUNT_AMOUNT = 1_000;
 
     public static int calculateTotalBenefit(Orders orders, Date date) {
         if (isEligible(orders)) {
@@ -23,28 +23,28 @@ public class Benefit {
 
     public static int calculateDDayDiscount(Date date) {
         if (date.isDayBeforeChristmas()) {
-            return INIT_OF_D_DAY_DISCOUNT + ((date.getValue() - 1) * UNIT_OF_D_DAY_DISCOUNT);
+            return CHRISTMAS_D_DAY.getPrice() + ((date.getValue() - 1) * UNIT_OF_D_DAY_DISCOUNT);
         }
         return 0;
     }
 
     public static int calculateWeekdayDiscount(Orders orders, Date date) {
         if (!date.isWeekend()) {
-            return orders.countDesserts() * UNIT_OF_WEEKDAY_DISCOUNT;
+            return orders.countDesserts() * WEEKDAY.getPrice();
         }
         return 0;
     }
 
     public static int calculateWeekendDiscount(Orders orders, Date date) {
         if (date.isWeekend()) {
-            return orders.countMains() * UNIT_OF_WEEKEND_DISCOUNT;
+            return orders.countMains() * WEEKEND.getPrice();
         }
         return 0;
     }
 
     public static int calculateSpecialDiscount(Date date) {
         if (date.isStarDay()) {
-            return SPECIAL_DISCOUNT_AMOUNT;
+            return SPECIAL.getPrice();
         }
         return 0;
     }
