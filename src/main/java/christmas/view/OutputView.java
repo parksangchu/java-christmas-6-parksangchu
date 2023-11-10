@@ -55,10 +55,9 @@ public class OutputView {
     public static void printBenefitDetail(Map<Event, Integer> benefits) {
         System.out.println(BENEFIT_LIST.getMessage());
         if (benefits != null) {
-            benefits.entrySet()
-                    .forEach(benefit -> System.out.printf("%s: -%,d%s%n", benefit.getKey().getDiscountName(),
-                            benefit.getValue(),
-                            MONEY_UNIT));
+            benefits.forEach((key, value) -> System.out.printf("%s: -%,d%s%n", key.getDiscountName(),
+                    value,
+                    MONEY_UNIT));
             return;
         }
         System.out.println(NO_DATA);
