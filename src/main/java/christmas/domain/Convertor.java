@@ -14,14 +14,14 @@ public class Convertor {
     private static final int COUNT_INDEX = 1;
     private static final String REGEXP_PATTERN_ORDER = "([가-힣]+)(\\-)(\\d+)";
 
-    public static Orders convertToOrders(String input) {
+    public static Orders toOrders(String input) {
         List<Order> orders = Arrays.stream(input.split(ORDERS_DELIMITER))
-                .map(Convertor::convertToOrder)
+                .map(Convertor::toOrder)
                 .collect(Collectors.toList());
         return new Orders(orders);
     }
 
-    private static Order convertToOrder(String input) {
+    private static Order toOrder(String input) {
         validatePattern(input);
         String[] orderGroup = input.split(ORDER_DELIMITER);
         String menuName = orderGroup[MENU_INDEX];

@@ -12,7 +12,7 @@ class ConvertorTest {
     @DisplayName("(한글-숫자) 형식이 아니거나 메뉴에 없으면 예외 발생")
     @ValueSource(strings = {"a-1,b-2", "마-1,a-2", "돼지바-1"})
     void convertToOrders(String input) {
-        assertThatThrownBy(() -> Convertor.convertToOrders(input))
+        assertThatThrownBy(() -> Convertor.toOrders(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
