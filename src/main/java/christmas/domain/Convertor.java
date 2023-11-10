@@ -12,7 +12,7 @@ public class Convertor {
     private static final String ORDER_DELIMITER = "-";
     private static final int MENU_INDEX = 0;
     private static final int COUNT_INDEX = 1;
-    private static final String REGEXP_PATTERN_ORDER = "([가-힣]+)(\\-)(\\d+)";
+    private static final String REGEXP_PATTERN_ORDER = "([가-힣]+)(-)(\\d+)";
 
     public static Orders toOrders(String input) {
         List<Order> orders = Arrays.stream(input.split(ORDERS_DELIMITER))
