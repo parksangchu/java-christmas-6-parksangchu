@@ -57,7 +57,8 @@ public class OutputView {
         if (benefits != null) {
             benefits.entrySet()
                     .stream()
-                    .forEach(benefit -> System.out.printf("%s: -%,d%s%n", benefit.getKey(), benefit.getValue(),
+                    .forEach(benefit -> System.out.printf("%s: -%,d%s%n", benefit.getKey().getDiscountName(),
+                            benefit.getValue(),
                             MONEY_UNIT));
             return;
         }

@@ -27,6 +27,7 @@ class BenefitTest {
         Date date = new Date(3);
         Orders orders = Convertor.toOrders("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
         Map<Event, Integer> benefits = Benefit.toBenefits(orders, date);
+        assert benefits != null;
         assertThat(benefits.get(CHRISTMAS_D_DAY)).isEqualTo(1_200);
         assertThat(benefits.get(WEEKDAY)).isEqualTo(4_046);
         assertThat(benefits.get(SPECIAL)).isEqualTo(1_000);
