@@ -30,6 +30,10 @@ public class Date {
         return createDayOfWeek() == SUNDAY || value == CHRISTMAS_DATE;
     }
 
+    public int getValue() {
+        return value;
+    }
+
     private DayOfWeek createDayOfWeek() {
         LocalDate localDate = LocalDate.of(THIS_YEAR, THIS_MONTH, value);
         return localDate.getDayOfWeek();
