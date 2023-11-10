@@ -73,7 +73,12 @@ public class OutputView {
         System.out.printf("-%,d%s%n", PaymentAmount, MONEY_UNIT);
     }
 
-    public static void printEventBadge() {
+    public static void printEventBadge(String badge) {
         System.out.println(EVENT_BADGE.getMessage());
+        if (badge != null) {
+            System.out.println(badge);
+            return;
+        }
+        System.out.println(NO_DATA);
     }
 }

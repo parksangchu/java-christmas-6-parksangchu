@@ -18,6 +18,7 @@ public class EventController {
         Map<Event, Integer> benefits = Benefit.toBenefits(orders, date);
         int totalBenefit = Benefit.calculateTotalBenefit(benefits);
         int PaymentAmount = orders.calculatePaymentAmount(totalOrderAmount, totalBenefit);
+        String badge = Benefit.toEventBadge(totalBenefit);
         OutputView.printPreview(date);
         OutputView.printOrders(orders);
         OutputView.printTotalOrderAmount(totalOrderAmount);
@@ -25,7 +26,7 @@ public class EventController {
         OutputView.printBenefitDetail(benefits);
         OutputView.printTotalBenefitAmount(totalBenefit);
         OutputView.printPaymentAmount(PaymentAmount);
-        OutputView.printEventBadge();
+        OutputView.printEventBadge(badge);
     }
 
     private Date createDate() {

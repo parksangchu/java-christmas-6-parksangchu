@@ -57,11 +57,11 @@ public class Benefit {
     }
 
     private static boolean isStarBadge(int totalBenefit) {
-        return totalBenefit >= STAR.getAmount() || totalBenefit < TREE.getAmount();
+        return totalBenefit >= STAR.getAmount() && totalBenefit < TREE.getAmount();
     }
 
     private static boolean isTreeBadge(int totalBenefit) {
-        return totalBenefit >= TREE.getAmount() || totalBenefit < SANTA.getAmount();
+        return totalBenefit >= TREE.getAmount() && totalBenefit < SANTA.getAmount();
     }
 
     private static boolean isSantaBadge(int totalBenefit) {
