@@ -21,6 +21,10 @@ public class Date {
         this.value = value;
     }
 
+    public boolean isDayBeforeChristmas() {
+        return value <= CHRISTMAS_DATE;
+    }
+
     public boolean isWeekend() {
         DayOfWeek dayOfWeek = createDayOfWeek();
         return dayOfWeek == FRIDAY || dayOfWeek == SATURDAY;
