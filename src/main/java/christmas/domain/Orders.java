@@ -25,6 +25,13 @@ public class Orders {
                 .sum();
     }
 
+    public int calculatePaymentAmount(int totalAmount, int totalBenefit) {
+        if (hasGift()) {
+            return totalAmount - totalBenefit + Event.GIFT.getInitPrice();
+        }
+        return totalAmount - totalBenefit;
+    }
+
     public boolean hasGift() {
         return calculateTotalAmount() >= LOWER_LIMIT_AMOUNT_FOR_GIFT;
     }
