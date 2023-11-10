@@ -30,7 +30,7 @@ public class Date {
         return createDayOfWeek() == SUNDAY || value == 25;
     }
 
-    public DayOfWeek createDayOfWeek() {
+    private DayOfWeek createDayOfWeek() {
         LocalDate localDate = LocalDate.of(THIS_YEAR, THIS_MONTH, value);
         return localDate.getDayOfWeek();
     }
