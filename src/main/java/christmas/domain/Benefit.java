@@ -1,5 +1,8 @@
 package christmas.domain;
 
+import static christmas.domain.Badge.SANTA;
+import static christmas.domain.Badge.STAR;
+import static christmas.domain.Badge.TREE;
 import static christmas.domain.Event.CHRISTMAS_D_DAY;
 import static christmas.domain.Event.GIFT;
 import static christmas.domain.Event.SPECIAL;
@@ -8,6 +11,7 @@ import static christmas.domain.Event.WEEKEND;
 
 import java.util.EnumMap;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 public class Benefit {
@@ -34,9 +38,34 @@ public class Benefit {
             return benefits.entrySet()
                     .stream()
                     .filter(benefit -> benefit.getValue() != 0)
-                    .collect(Collectors.toMap(benefit -> benefit.getKey(), benefit -> benefit.getValue()));
+                    .collect(Collectors.toMap(Entry::getKey, Entry::getValue));
         }
         return null;
+    }
+
+    public static String toEventBadge(int totalBenefit) {
+        if (isStarBadge(totalBenefit)) {
+            return STAR.getType();
+        }
+        if (isTreeBadge(totalBenefit)) {
+            return TREE.getType();
+        }
+        if (isSantaBadge(totalBenefit)) {
+            return SANTA.getType();
+        }
+        return null;
+    }
+
+    private static boolean isStarBadge(int totalBenefit) {
+        return totalBenefit >= STAR.getAmount() || totalBenefit < TREE.getAmount();
+    }
+
+    private static boolean isTreeBadge(int totalBenefit) {
+        return totalBenefit >= TREE.getAmount() || totalBenefit < SANTA.getAmount();
+    }
+
+    private static boolean isSantaBadge(int totalBenefit) {
+        return totalBenefit >= SANTA.getAmount();
     }
 
     private static int calculateDDayDiscount(Date date) {
