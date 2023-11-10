@@ -23,7 +23,7 @@ class DateTest {
     @DisplayName("숫자를 입력받아 요일 생성")
     void createDayOfWeek() {
         Date date = new Date(31);
-        DayOfWeek dayOfWeek = date.createDayofWeek();
+        DayOfWeek dayOfWeek = date.createDayOfWeek();
         assertThat(dayOfWeek).isEqualTo(SUNDAY);
     }
 }
