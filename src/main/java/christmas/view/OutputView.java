@@ -59,8 +59,9 @@ public class OutputView {
         System.out.printf("-%,d%s%n", totalBenefitAmount, MONEY_UNIT);
     }
 
-    public static void printPaymentAmount() {
+    public static void printPaymentAmount(int totalPaymentAmount) {
         System.out.println(TOTAL_PAYMENT_AMOUNT.getMessage());
+        System.out.printf("-%,d%s%n", totalPaymentAmount, MONEY_UNIT);
     }
 
     public static void printEventBadge() {

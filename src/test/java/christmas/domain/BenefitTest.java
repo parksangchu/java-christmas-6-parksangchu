@@ -4,7 +4,6 @@ import static christmas.domain.Event.CHRISTMAS_D_DAY;
 import static christmas.domain.Event.GIFT;
 import static christmas.domain.Event.SPECIAL;
 import static christmas.domain.Event.WEEKDAY;
-import static christmas.domain.Event.WEEKEND;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import java.util.Map;
@@ -30,7 +29,6 @@ class BenefitTest {
         Map<Event, Integer> benefits = Benefit.toBenefits(orders, date);
         assertThat(benefits.get(CHRISTMAS_D_DAY)).isEqualTo(1_200);
         assertThat(benefits.get(WEEKDAY)).isEqualTo(4_046);
-        assertThat(benefits.get(WEEKEND)).isEqualTo(0);
         assertThat(benefits.get(SPECIAL)).isEqualTo(1_000);
         assertThat(benefits.get(GIFT)).isEqualTo(25_000);
     }

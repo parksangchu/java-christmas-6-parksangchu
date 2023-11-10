@@ -30,6 +30,8 @@ public class Benefit {
             benefits.put(WEEKEND, calculateWeekendDiscount(orders, date));
             benefits.put(SPECIAL, calculateSpecialDiscount(date));
             benefits.put(GIFT, calculateGiftAmount(orders));
+            benefits.values()
+                    .remove(0);
             return benefits;
         }
         return null;

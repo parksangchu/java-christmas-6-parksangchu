@@ -14,22 +14,24 @@ public class EventController {
         OutputView.printWelcome();
         Date date = createDate();
         Orders orders = createOrders();
+        int totalOrderAmount = orders.calculateTotalAmount();
         Map<Event, Integer> benefits = Benefit.toBenefits(orders, date);
+        int totalBenefit = Benefit.calculateTotalBenefit(benefits);
+        int totalPaymentAmount = totalOrderAmount - totalBenefit;
         OutputView.printPreview(date);
         OutputView.printOrders(orders);
-        OutputView.printTotalOrderAmount(orders.calculateTotalAmount());
+        OutputView.printTotalOrderAmount(totalOrderAmount);
         OutputView.printGift(orders.hasGift());
         OutputView.printBenefitList();
-        OutputView.printTotalBenefitAmount(Benefit.calculateTotalBenefit(benefits));
-        OutputView.printPaymentAmount();
+        OutputView.printTotalBenefitAmount(totalBenefit);
+        OutputView.printPaymentAmount(totalPaymentAmount);
         OutputView.printEventBadge();
     }
 
     private Date createDate() {
         while (true) {
             try {
-                Date date = new Date(InputView.readDate());
-                return date;
+                return new Date(InputView.readDate());
             } catch (IllegalArgumentException e) {
                 OutputView.printError(e);
             }
@@ -39,8 +41,7 @@ public class EventController {
     private Orders createOrders() {
         while (true) {
             try {
-                Orders orders = Convertor.toOrders(InputView.readOrder());
-                return orders;
+                return Convertor.toOrders(InputView.readOrder());
             } catch (IllegalArgumentException e) {
                 OutputView.printError(e);
             }
