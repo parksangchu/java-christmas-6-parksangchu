@@ -7,7 +7,7 @@ public enum Notice {
     PREVIEW("12월 %s일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!%n"),
     ORDER_MENU("\n<주문 메뉴>"),
     TOTAL_ORDER_AMOUNT("<할인 전 총주문 금액>"),
-    GIFT("\n<증정 메뉴>"),
+    GIFT_MENU("\n<증정 메뉴>"),
     BENEFIT_LIST("\n<혜택 내역>"),
     TOTAL_BENEFIT_AMOUNT("\n<총혜택 금액>"),
     TOTAL_PAYMENT_AMOUNT("\n<할인 후 예상 결제 금액>"),
