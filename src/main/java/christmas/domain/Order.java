@@ -19,13 +19,19 @@ public class Order {
 
     public int calculateByMenu() {
         Menu menu = Menu.from(menuName);
-        return menu.getPrice() * count;
+        if (menu != null) {
+            return menu.getPrice() * count;
+        }
+        return 0;
     }
 
 
     public boolean isBeverage() {
         Menu menu = Menu.from(menuName);
-        return menu.getType().equals("음료");
+        if (menu != null) {
+            return menu.getType().equals("음료");
+        }
+        return false;
     }
 
     public int countDessert() {
@@ -44,12 +50,18 @@ public class Order {
 
     private boolean isDessert() {
         Menu menu = Menu.from(menuName);
-        return menu.getType().equals("디저트");
+        if (menu != null) {
+            return menu.getType().equals("디저트");
+        }
+        return false;
     }
 
     private boolean isMain() {
         Menu menu = Menu.from(menuName);
-        return menu.getType().equals("메인");
+        if (menu != null) {
+            return menu.getType().equals("메인");
+        }
+        return false;
     }
 
     public int getCount() {
