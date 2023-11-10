@@ -1,6 +1,6 @@
 package christmas.view;
 
-import static christmas.domain.Menus.CHAMPAGNE;
+import static christmas.domain.Menu.CHAMPAGNE;
 import static christmas.view.Notice.BENEFIT_LIST;
 import static christmas.view.Notice.EVENT_BADGE;
 import static christmas.view.Notice.GIFT_MENU;

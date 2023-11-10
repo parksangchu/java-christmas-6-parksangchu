@@ -1,57 +1,71 @@
 package christmas.domain;
 
-import static christmas.domain.Discounts.CHRISTMAS_D_DAY;
-import static christmas.domain.Discounts.SPECIAL;
-import static christmas.domain.Discounts.WEEKDAY;
-import static christmas.domain.Discounts.WEEKEND;
-import static christmas.domain.Menus.CHAMPAGNE;
+import static christmas.domain.Event.CHRISTMAS_D_DAY;
+import static christmas.domain.Event.GIFT;
+import static christmas.domain.Event.SPECIAL;
+import static christmas.domain.Event.WEEKDAY;
+import static christmas.domain.Event.WEEKEND;
+
+import java.util.EnumMap;
+import java.util.Map;
 
 public class Benefit {
     private static final int LOWER_LIMIT_AMOUNT_FOR_BENEFIT = 10_000;
-    private static final int UNIT_OF_D_DAY_DISCOUNT = 100;
 
-    public static int calculateTotalBenefit(Orders orders, Date date) {
+    public static int calculateTotalBenefit(Map<Event, Integer> benefits) {
+        if (benefits != null) {
+            return benefits.values()
+                    .stream()
+                    .mapToInt(amount -> amount)
+                    .sum();
+        }
+        return 0;
+    }
+
+    public static Map<Event, Integer> toBenefits(Orders orders, Date date) {
+        Map<Event, Integer> benefits = new EnumMap<>(Event.class);
         if (isEligible(orders)) {
-            return calculateDDayDiscount(date)
-                    + calculateWeekdayDiscount(orders, date)
-                    + calculateWeekendDiscount(orders, date)
-                    + calculateSpecialDiscount(date)
-                    + calculateGiftAmount(orders);
+            benefits.put(CHRISTMAS_D_DAY, calculateDDayDiscount(date));
+            benefits.put(WEEKDAY, calculateWeekdayDiscount(orders, date));
+            benefits.put(WEEKEND, calculateWeekendDiscount(orders, date));
+            benefits.put(SPECIAL, calculateSpecialDiscount(date));
+            benefits.put(GIFT, calculateGiftAmount(orders));
+            return benefits;
         }
-        return 0;
+        return null;
     }
 
-    public static int calculateDDayDiscount(Date date) {
+    private static int calculateDDayDiscount(Date date) {
         if (date.isDayBeforeChristmas()) {
-            return CHRISTMAS_D_DAY.getPrice() + ((date.getValue() - 1) * UNIT_OF_D_DAY_DISCOUNT);
+            return CHRISTMAS_D_DAY.getInitPrice() + ((date.getValue() - 1) * CHRISTMAS_D_DAY.getUnitPrice());
         }
         return 0;
     }
 
-    public static int calculateWeekdayDiscount(Orders orders, Date date) {
+    private static int calculateWeekdayDiscount(Orders orders, Date date) {
         if (!date.isWeekend()) {
-            return orders.countDesserts() * WEEKDAY.getPrice();
+            return orders.countDesserts() * WEEKDAY.getUnitPrice();
         }
         return 0;
     }
 
-    public static int calculateWeekendDiscount(Orders orders, Date date) {
+    private static int calculateWeekendDiscount(Orders orders, Date date) {
         if (date.isWeekend()) {
-            return orders.countMains() * WEEKEND.getPrice();
+            return orders.countMains() * WEEKEND.getUnitPrice();
         }
         return 0;
     }
 
-    public static int calculateSpecialDiscount(Date date) {
+    private static int calculateSpecialDiscount(Date date) {
         if (date.isStarDay()) {
-            return SPECIAL.getPrice();
+            return SPECIAL.getInitPrice();
         }
         return 0;
     }
 
-    public static int calculateGiftAmount(Orders orders) {
+    private static int calculateGiftAmount(Orders orders) {
         if (orders.hasGift()) {
-            return CHAMPAGNE.getPrice();
+            return GIFT.getInitPrice();
         }
         return 0;
     }
