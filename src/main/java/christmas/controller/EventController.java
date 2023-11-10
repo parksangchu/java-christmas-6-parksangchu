@@ -1,5 +1,6 @@
 package christmas.controller;
 
+import christmas.domain.Benefit;
 import christmas.domain.Convertor;
 import christmas.domain.Date;
 import christmas.domain.Orders;
@@ -17,7 +18,7 @@ public class EventController {
         OutputView.printTotalOrderAmount(totalAmount);
         OutputView.printGift(orders.hasGift());
         OutputView.printBenefitList();
-        OutputView.printTotalBenefitAmount();
+        OutputView.printTotalBenefitAmount(Benefit.calculateTotalBenefit(orders, date));
         OutputView.printPaymentAmount();
         OutputView.printEventBadge();
     }
