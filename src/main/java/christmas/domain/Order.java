@@ -22,9 +22,20 @@ public class Order {
         return menu.getPrice() * count;
     }
 
+
     public boolean isBeverage() {
         Menu menu = Menu.from(menuName);
         return menu.getType().equals("음료");
+    }
+
+    public boolean isDessert() {
+        Menu menu = Menu.from(menuName);
+        return menu.getType().equals("디저트");
+    }
+
+    public boolean isMain() {
+        Menu menu = Menu.from(menuName);
+        return menu.getType().equals("메인");
     }
 
     public int getCount() {
