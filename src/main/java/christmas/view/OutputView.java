@@ -1,8 +1,9 @@
 package christmas.view;
 
+import static christmas.domain.Menu.CHAMPAGNE;
 import static christmas.view.Notice.BENEFIT_LIST;
 import static christmas.view.Notice.EVENT_BADGE;
-import static christmas.view.Notice.GIFT;
+import static christmas.view.Notice.GIFT_MENU;
 import static christmas.view.Notice.ORDER_MENU;
 import static christmas.view.Notice.PREVIEW;
 import static christmas.view.Notice.TOTAL_BENEFIT_AMOUNT;
@@ -14,8 +15,9 @@ import christmas.domain.Date;
 import christmas.domain.Orders;
 
 public class OutputView {
-    public static final String MONEY_UNIT = "원";
-    public static final String NO_DATA = "없음";
+    private static final String MONEY_UNIT = "원";
+    private static final String GIFT = CHAMPAGNE.getMenuName() + " 1개";
+    private static final String NO_DATA = "없음";
 
     public static void printError(Exception e) {
         System.out.println(e.getMessage());
@@ -39,8 +41,13 @@ public class OutputView {
         System.out.printf("%,d%s%n", totalAmount, MONEY_UNIT);
     }
 
-    public static void printGift() {
-        System.out.println(GIFT.getMessage());
+    public static void printGift(boolean hasGift) {
+        System.out.println(GIFT_MENU.getMessage());
+        if (hasGift) {
+            System.out.println(GIFT);
+            return;
+        }
+        System.out.println(NO_DATA);
     }
 
     public static void printBenefitList() {

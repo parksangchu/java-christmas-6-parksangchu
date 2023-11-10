@@ -15,7 +15,7 @@ public class EventController {
         OutputView.printPreview(date);
         OutputView.printOrders(orders);
         OutputView.printTotalOrderAmount(totalAmount);
-        OutputView.printGift();
+        OutputView.printGift(orders.hasGift());
         OutputView.printBenefitList();
         OutputView.printTotalBenefitAmount();
         OutputView.printPaymentAmount();
