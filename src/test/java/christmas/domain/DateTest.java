@@ -17,6 +17,14 @@ class DateTest {
     }
 
     @ParameterizedTest
+    @DisplayName("입력 받는 날짜는 크리스마스 전이다")
+    @ValueSource(ints = {1, 2, 8, 9, 15, 16, 22, 23, 24, 25})
+    void isDayBeforeChristmas(int input) {
+        Date date = new Date(input);
+        assertThat(date.isDayBeforeChristmas()).isEqualTo(true);
+    }
+
+    @ParameterizedTest
     @DisplayName("입력 받은 날짜는 주말이다")
     @ValueSource(ints = {1, 2, 8, 9, 15, 16, 22, 23, 29, 30})
     void isWeekend(int input) {
@@ -31,4 +39,6 @@ class DateTest {
         Date date = new Date(input);
         assertThat(date.isStarDay()).isEqualTo(true);
     }
+
+
 }
