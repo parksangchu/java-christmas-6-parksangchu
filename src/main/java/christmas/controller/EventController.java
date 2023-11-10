@@ -22,7 +22,7 @@ public class EventController {
         OutputView.printOrders(orders);
         OutputView.printTotalOrderAmount(totalOrderAmount);
         OutputView.printGift(orders.hasGift());
-        OutputView.printBenefitList();
+        OutputView.printBenefitDetail(benefits);
         OutputView.printTotalBenefitAmount(totalBenefit);
         OutputView.printPaymentAmount(totalPaymentAmount);
         OutputView.printEventBadge();

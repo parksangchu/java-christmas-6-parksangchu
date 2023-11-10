@@ -12,7 +12,9 @@ import static christmas.view.Notice.TOTAL_PAYMENT_AMOUNT;
 import static christmas.view.Notice.WELCOME;
 
 import christmas.domain.Date;
+import christmas.domain.Event;
 import christmas.domain.Orders;
+import java.util.Map;
 
 public class OutputView {
     private static final String MONEY_UNIT = "원";
@@ -50,8 +52,16 @@ public class OutputView {
         System.out.println(NO_DATA);
     }
 
-    public static void printBenefitList() {
+    public static void printBenefitDetail(Map<Event, Integer> benefits) {
         System.out.println(BENEFIT_LIST.getMessage());
+        if (benefits != null) {
+            benefits.entrySet()
+                    .stream()
+                    .forEach(benefit -> System.out.printf("%s: -%,d%s%n", benefit.getKey(), benefit.getValue(),
+                            MONEY_UNIT));
+            return;
+        }
+        System.out.println(NO_DATA);
     }
 
     public static void printTotalBenefitAmount(int totalBenefitAmount) {
