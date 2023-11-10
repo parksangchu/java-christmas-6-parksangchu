@@ -27,7 +27,7 @@ public class Date {
     }
 
     public boolean isStarDay() {
-        return createDayOfWeek() == SUNDAY || value == 25;
+        return createDayOfWeek() == SUNDAY || value == CHRISTMAS_DATE;
     }
 
     private DayOfWeek createDayOfWeek() {
