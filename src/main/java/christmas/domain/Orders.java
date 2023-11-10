@@ -8,6 +8,7 @@ import java.util.List;
 
 public class Orders {
     private static final int MAX_TOTAL_ORDER_COUNT = 20;
+    private static final int LOWER_LIMIT_AMOUNT_FOR_GIFT = 120_000;
     private final List<Order> orders;
 
 
@@ -22,6 +23,10 @@ public class Orders {
         return orders.stream()
                 .mapToInt(Order::calculateByMenu)
                 .sum();
+    }
+
+    public boolean hasGift() {
+        return calculateTotalAmount() >= LOWER_LIMIT_AMOUNT_FOR_GIFT;
     }
 
     private void validateDuplicated(List<Order> orders) {
