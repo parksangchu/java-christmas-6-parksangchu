@@ -65,12 +65,16 @@ public class OutputView {
 
     public static void printTotalBenefitAmount(int totalBenefitAmount) {
         System.out.println(TOTAL_BENEFIT_AMOUNT.getMessage());
-        System.out.printf("-%,d%s%n", totalBenefitAmount, MONEY_UNIT);
+        if (totalBenefitAmount > 0) {
+            System.out.printf("-%,d%s%n", totalBenefitAmount, MONEY_UNIT);
+            return;
+        }
+        System.out.printf("%,d%s%n", totalBenefitAmount, MONEY_UNIT);
     }
 
     public static void printPaymentAmount(int PaymentAmount) {
         System.out.println(TOTAL_PAYMENT_AMOUNT.getMessage());
-        System.out.printf("-%,d%s%n", PaymentAmount, MONEY_UNIT);
+        System.out.printf("%,d%s%n", PaymentAmount, MONEY_UNIT);
     }
 
     public static void printEventBadge(String badge) {
