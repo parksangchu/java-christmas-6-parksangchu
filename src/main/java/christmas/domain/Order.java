@@ -28,12 +28,26 @@ public class Order {
         return menu.getType().equals("음료");
     }
 
-    public boolean isDessert() {
+    public int countDessert() {
+        if (isDessert()) {
+            return count;
+        }
+        return 0;
+    }
+
+    public int countMain() {
+        if (isMain()) {
+            return count;
+        }
+        return 0;
+    }
+
+    private boolean isDessert() {
         Menu menu = Menu.from(menuName);
         return menu.getType().equals("디저트");
     }
 
-    public boolean isMain() {
+    private boolean isMain() {
         Menu menu = Menu.from(menuName);
         return menu.getType().equals("메인");
     }

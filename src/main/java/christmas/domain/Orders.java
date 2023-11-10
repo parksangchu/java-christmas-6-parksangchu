@@ -29,10 +29,16 @@ public class Orders {
         return calculateTotalAmount() >= LOWER_LIMIT_AMOUNT_FOR_GIFT;
     }
 
-    public int countDessert() {
-        return (int) orders.stream()
-                .filter(Order::isDessert)
-                .count();
+    public int countDesserts() {
+        return orders.stream()
+                .mapToInt(Order::countDessert)
+                .sum();
+    }
+
+    public int countMain() {
+        return orders.stream()
+                .mapToInt(Order::countMain)
+                .sum();
     }
 
     private void validateDuplicated(List<Order> orders) {
