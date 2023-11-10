@@ -31,9 +31,17 @@ class OrdersTest {
 
     @Test
     @DisplayName("총 주문 금액 계산")
-    void calculateTotalAmountTest() {
+    void calculateTotalAmount() {
         Orders orders = new Orders(List.of(new Order("제로콜라", 10), new Order("해산물파스타", 10)));
         int result = orders.calculateTotalAmount();
         assertThat(result).isEqualTo(30000 + 350000);
     }
+
+    @Test
+    @DisplayName("티본스테이크 3개 주문시 사은품 증정")
+    void hasGift() {
+        Orders orders = Convertor.convertToOrders("티본스테이크-3");
+        assertThat(orders.hasGift()).isEqualTo(true);
+    }
+
 }
