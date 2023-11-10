@@ -40,21 +40,21 @@ class OrdersTest {
     @Test
     @DisplayName("티본스테이크 3개 주문시 사은품 증정")
     void hasGift() {
-        Orders orders = Convertor.convertToOrders("티본스테이크-3");
+        Orders orders = Convertor.toOrders("티본스테이크-3");
         assertThat(orders.hasGift()).isEqualTo(true);
     }
 
     @Test
     @DisplayName("디저트의 개수는 8개")
     void countDesserts() {
-        Orders orders = Convertor.convertToOrders("양송이수프-1,티본스테이크-3,바비큐립-4,초코케이크-5,아이스크림-3,제로콜라-2");
+        Orders orders = Convertor.toOrders("양송이수프-1,티본스테이크-3,바비큐립-4,초코케이크-5,아이스크림-3,제로콜라-2");
         assertThat(orders.countDesserts()).isEqualTo(8);
     }
 
     @Test
     @DisplayName("메인의 개수는 7개")
     void countMains() {
-        Orders orders = Convertor.convertToOrders("양송이수프-1,티본스테이크-3,바비큐립-4,초코케이크-5,아이스크림-3,제로콜라-2");
+        Orders orders = Convertor.toOrders("양송이수프-1,티본스테이크-3,바비큐립-4,초코케이크-5,아이스크림-3,제로콜라-2");
         assertThat(orders.countMains()).isEqualTo(7);
     }
 }

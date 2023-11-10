@@ -36,7 +36,7 @@ public class EventController {
     private Orders createOrders() {
         while (true) {
             try {
-                Orders orders = Convertor.convertToOrders(InputView.readOrder());
+                Orders orders = Convertor.toOrders(InputView.readOrder());
                 return orders;
             } catch (IllegalArgumentException e) {
                 OutputView.printError(e);
