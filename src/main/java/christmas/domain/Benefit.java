@@ -10,7 +10,7 @@ public class Benefit {
     private static final int UNIT_OF_WEEKEND_DISCOUNT = 2_023;
     private static final int SPECIAL_DISCOUNT_AMOUNT = 1_000;
 
-    public int calculateTotalBenefit(Orders orders, Date date) {
+    public static int calculateTotalBenefit(Orders orders, Date date) {
         if (isEligible(orders)) {
             return calculateDDayDiscount(date)
                     + calculateWeekdayDiscount(orders, date)
@@ -21,32 +21,32 @@ public class Benefit {
         return 0;
     }
 
-    private int calculateWeekdayDiscount(Orders orders, Date date) {
+    private static int calculateWeekdayDiscount(Orders orders, Date date) {
         if (!date.isWeekend()) {
             return orders.countDesserts() * UNIT_OF_WEEKDAY_DISCOUNT;
         }
         return 0;
     }
 
-    private int calculateWeekendDiscount(Orders orders, Date date) {
+    private static int calculateWeekendDiscount(Orders orders, Date date) {
         if (date.isWeekend()) {
             return orders.countMains() * UNIT_OF_WEEKEND_DISCOUNT;
         }
         return 0;
     }
 
-    private int calculateDDayDiscount(Date date) {
+    private static int calculateDDayDiscount(Date date) {
         return INIT_OF_D_DAY_DISCOUNT + (date.getValue() * UNIT_OF_D_DAY_DISCOUNT);
     }
 
-    private int calculateSpecialDiscount(Date date) {
+    private static int calculateSpecialDiscount(Date date) {
         if (date.isStarDay()) {
             return SPECIAL_DISCOUNT_AMOUNT;
         }
         return 0;
     }
 
-    private int calculateGiftAmount(Orders orders) {
+    private static int calculateGiftAmount(Orders orders) {
         if (orders.hasGift()) {
             return CHAMPAGNE.getPrice();
         }
@@ -54,7 +54,7 @@ public class Benefit {
     }
 
 
-    private boolean isEligible(Orders orders) {
+    private static boolean isEligible(Orders orders) {
         return orders.calculateTotalAmount() > LOWER_LIMIT_AMOUNT_FOR_BENEFIT;
     }
 
