@@ -29,6 +29,12 @@ public class Orders {
         return calculateTotalAmount() >= LOWER_LIMIT_AMOUNT_FOR_GIFT;
     }
 
+    public int countDessert() {
+        return (int) orders.stream()
+                .filter(Order::isDessert)
+                .count();
+    }
+
     private void validateDuplicated(List<Order> orders) {
         if (isDuplicated(orders)) {
             throw new IllegalArgumentException(INVALID_ORDER.getMessage());
