@@ -1,12 +1,9 @@
 package christmas.domain;
 
-import static java.time.DayOfWeek.SUNDAY;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
-import java.time.DayOfWeek;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -19,11 +16,19 @@ class DateTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @Test
-    @DisplayName("숫자를 입력받아 요일 생성")
-    void createDayOfWeek() {
-        Date date = new Date(31);
-        DayOfWeek dayOfWeek = date.createDayOfWeek();
-        assertThat(dayOfWeek).isEqualTo(SUNDAY);
+    @ParameterizedTest
+    @DisplayName("입력 받은 날짜는 주말이다")
+    @ValueSource(ints = {1, 2, 8, 9, 15, 16, 22, 23, 29, 30})
+    void isWeekend(int input) {
+        Date date = new Date(input);
+        assertThat(date.isWeekend()).isEqualTo(true);
+    }
+
+    @ParameterizedTest
+    @DisplayName("입력 받은 날짜는 스타데이다")
+    @ValueSource(ints = {3, 10, 17, 24, 25, 31})
+    void isStarDay(int input) {
+        Date date = new Date(input);
+        assertThat(date.isStarDay()).isEqualTo(true);
     }
 }
