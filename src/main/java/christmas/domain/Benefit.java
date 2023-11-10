@@ -36,7 +36,10 @@ public class Benefit {
     }
 
     private static int calculateDDayDiscount(Date date) {
-        return INIT_OF_D_DAY_DISCOUNT + (date.getValue() * UNIT_OF_D_DAY_DISCOUNT);
+        if (date.isDayBeforeChristmas()) {
+            return INIT_OF_D_DAY_DISCOUNT + ((date.getValue() - 1) * UNIT_OF_D_DAY_DISCOUNT);
+        }
+        return 0;
     }
 
     private static int calculateSpecialDiscount(Date date) {
