@@ -35,7 +35,7 @@ public class Orders {
                 .sum();
     }
 
-    public int countMain() {
+    public int countMains() {
         return orders.stream()
                 .mapToInt(Order::countMain)
                 .sum();
