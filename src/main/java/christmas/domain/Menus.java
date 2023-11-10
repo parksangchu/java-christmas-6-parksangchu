@@ -1,6 +1,6 @@
 package christmas.domain;
 
-public enum Menu {
+public enum Menus {
     MUSHROOM_SOUP("양송이수프", 6_000, "애피타이저"),
     TAPAS("타파스", 5_500, "애피타이저"),
     CAESAR_SALAD("시저샐러드", 8_000, "애피타이저"),
@@ -18,14 +18,14 @@ public enum Menu {
     private final int price;
     private final String type;
 
-    Menu(String menuName, int price, String type) {
+    Menus(String menuName, int price, String type) {
         this.menuName = menuName;
         this.price = price;
         this.type = type;
     }
 
-    public static Menu from(String menuName) {
-        for (Menu menu : values()) {
+    public static Menus from(String menuName) {
+        for (Menus menu : values()) {
             if (menu.getMenuName().equals(menuName)) {
                 return menu;
             }

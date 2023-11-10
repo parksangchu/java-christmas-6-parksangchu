@@ -18,13 +18,13 @@ public class Order {
     }
 
     public int calculateByMenu() {
-        Menu menu = Menu.from(menuName);
+        Menus menu = Menus.from(menuName);
         return menu.getPrice() * count;
     }
 
 
     public boolean isBeverage() {
-        Menu menu = Menu.from(menuName);
+        Menus menu = Menus.from(menuName);
         return menu.getType().equals("음료");
     }
 
@@ -43,12 +43,12 @@ public class Order {
     }
 
     private boolean isDessert() {
-        Menu menu = Menu.from(menuName);
+        Menus menu = Menus.from(menuName);
         return menu.getType().equals("디저트");
     }
 
     private boolean isMain() {
-        Menu menu = Menu.from(menuName);
+        Menus menu = Menus.from(menuName);
         return menu.getType().equals("메인");
     }
 
@@ -68,7 +68,7 @@ public class Order {
     }
 
     private boolean isInvalidMenu(String menu) {
-        return Menu.from(menu) == null;
+        return Menus.from(menu) == null;
     }
 
     private void validateCount(int count) {
