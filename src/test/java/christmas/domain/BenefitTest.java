@@ -9,6 +9,8 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import java.util.Map;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class BenefitTest {
 
@@ -32,5 +34,13 @@ class BenefitTest {
         assertThat(benefits.get(WEEKDAY)).isEqualTo(4_046);
         assertThat(benefits.get(SPECIAL)).isEqualTo(1_000);
         assertThat(benefits.get(GIFT)).isEqualTo(25_000);
+    }
+
+    @ParameterizedTest
+    @DisplayName("총 혜택 금액에 따른 뱃지 지급")
+    @CsvSource(value = {"5500,별", "10500,트리", "21000,산타"})
+    void toEventBadge(int input, String expect) {
+        String badge = Benefit.toEventBadge(input);
+        assertThat(badge).isEqualTo(expect);
     }
 }
