@@ -1,6 +1,6 @@
 package christmas.domain;
 
-import static christmas.global.Error.INVALID_DATE;
+import static christmas.domain.Error.INVALID_DATE;
 import static java.time.DayOfWeek.FRIDAY;
 import static java.time.DayOfWeek.SATURDAY;
 import static java.time.DayOfWeek.SUNDAY;
