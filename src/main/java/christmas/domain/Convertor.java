@@ -15,9 +15,8 @@ public class Convertor {
     private static final String REGEXP_PATTERN_ORDER = "([가-힣]+)(-)(\\d+)";
 
     public static Orders toOrders(String input) {
-        String[] orderGroup = input.trim()
-                .split(ORDERS_DELIMITER);
-        List<Order> orders = Arrays.stream(orderGroup)
+        List<Order> orders = Arrays.stream(input.split(ORDERS_DELIMITER))
+                .map(String::trim)
                 .map(Convertor::toOrder)
                 .collect(Collectors.toList());
         return new Orders(orders);
@@ -25,9 +24,9 @@ public class Convertor {
 
     private static Order toOrder(String input) {
         validatePattern(input);
-        String[] orderGroup = input.split(ORDER_DELIMITER);
-        String menuName = orderGroup[MENU_INDEX];
-        int count = Integer.parseInt(orderGroup[COUNT_INDEX]);
+        String[] menus = input.split(ORDER_DELIMITER);
+        String menuName = menus[MENU_INDEX];
+        int count = Integer.parseInt(menus[COUNT_INDEX]);
         return new Order(menuName, count);
     }
 
