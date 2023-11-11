@@ -12,7 +12,6 @@ class BenefitsTest {
         Date date = new Date(3);
         Orders orders = Convertor.toOrders("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
         Benefits benefits = EventManager.toBenefits(orders, date);
-        assert benefits != null;
         int totalBenefit = benefits.calculateTotalBenefit();
         assertThat(totalBenefit).isEqualTo(31246);
     }
