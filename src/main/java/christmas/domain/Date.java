@@ -48,9 +48,4 @@ public class Date {
             throw new IllegalArgumentException(INVALID_DATE.getMessage());
         }
     }
-
-    @Override
-    public String toString() {
-        return String.valueOf(value);
-    }
 }
