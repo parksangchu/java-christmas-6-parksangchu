@@ -12,23 +12,11 @@ import static christmas.global.Event.WEEKEND;
 import christmas.global.Event;
 import java.util.EnumMap;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
 
 public class EventManager {
     private static final int LOWER_LIMIT_AMOUNT_FOR_BENEFIT = 10_000;
 
-    public static int calculateTotalBenefit(Map<Event, Integer> benefits) {
-        if (benefits != null) {
-            return benefits.values()
-                    .stream()
-                    .mapToInt(amount -> amount)
-                    .sum();
-        }
-        return 0;
-    }
-
-    public static Map<Event, Integer> toBenefits(Orders orders, Date date) {
+    public static Benefits toBenefits(Orders orders, Date date) {
         Map<Event, Integer> benefits = new EnumMap<>(Event.class);
         if (isEligible(orders)) {
             benefits.put(CHRISTMAS_D_DAY, calculateDDayDiscount(date));
@@ -36,10 +24,7 @@ public class EventManager {
             benefits.put(WEEKEND, calculateWeekendDiscount(orders, date));
             benefits.put(SPECIAL, calculateSpecialDiscount(date));
             benefits.put(GIFT, calculateGiftAmount(orders));
-            return benefits.entrySet()
-                    .stream()
-                    .filter(benefit -> benefit.getValue() != 0)
-                    .collect(Collectors.toMap(Entry::getKey, Entry::getValue));
+            return new Benefits(benefits);
         }
         return null;
     }

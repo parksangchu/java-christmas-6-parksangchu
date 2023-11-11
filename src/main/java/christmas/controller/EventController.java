@@ -1,13 +1,12 @@
 package christmas.controller;
 
+import christmas.domain.Benefits;
 import christmas.domain.Convertor;
 import christmas.domain.Date;
 import christmas.domain.EventManager;
 import christmas.domain.Orders;
-import christmas.global.Event;
 import christmas.view.InputView;
 import christmas.view.OutputView;
-import java.util.Map;
 
 public class EventController {
     public void start() {
@@ -15,8 +14,8 @@ public class EventController {
         Date date = createDate();
         Orders orders = createOrders();
         int totalOrderAmount = orders.calculateTotalAmount();
-        Map<Event, Integer> benefits = EventManager.toBenefits(orders, date);
-        int totalBenefit = EventManager.calculateTotalBenefit(benefits);
+        Benefits benefits = EventManager.toBenefits(orders, date);
+        int totalBenefit = benefits.calculateTotalBenefit();
         int PaymentAmount = EventManager.calculatePaymentAmount(orders, totalOrderAmount, totalBenefit);
         String badge = EventManager.toEventBadge(totalBenefit);
         OutputView.printPreview(date);
