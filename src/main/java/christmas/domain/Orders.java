@@ -38,10 +38,7 @@ public class Orders {
     }
 
     private int minusValueToZero(int paymentAmount) {
-        if (paymentAmount < 0) {
-            return 0;
-        }
-        return paymentAmount;
+        return Math.max(paymentAmount, 0);
     }
 
     public boolean hasGift() {
