@@ -24,9 +24,8 @@ public class EventManager {
             benefits.put(WEEKEND, calculateWeekendDiscount(orders, date));
             benefits.put(SPECIAL, calculateSpecialDiscount(date));
             benefits.put(GIFT, calculateGiftAmount(orders));
-            return new Benefits(benefits);
         }
-        return null;
+        return new Benefits(benefits);
     }
 
     public static int calculatePaymentAmount(Orders orders, int totalAmount, int totalBenefit) {
