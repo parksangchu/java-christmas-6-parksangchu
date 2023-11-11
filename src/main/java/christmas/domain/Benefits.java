@@ -1,9 +1,11 @@
 package christmas.domain;
 
+
 import christmas.global.Event;
 import java.util.Map;
 
 public class Benefits {
+    private static final String MONEY_UNIT = "개";
     private final Map<Event, Integer> benefits;
 
     public Benefits(Map<Event, Integer> benefits) {
@@ -18,6 +20,10 @@ public class Benefits {
                     .sum();
         }
         return 0;
+    }
+
+    public Map<Event, Integer> getBenefits() {
+        return benefits;
     }
 }
 

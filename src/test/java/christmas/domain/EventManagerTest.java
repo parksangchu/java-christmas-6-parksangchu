@@ -6,9 +6,7 @@ import static christmas.global.Event.SPECIAL;
 import static christmas.global.Event.WEEKDAY;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-import christmas.global.Event;
 import java.util.List;
-import java.util.Map;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -30,12 +28,12 @@ class EventManagerTest {
     void toBenefits() {
         Date date = new Date(3);
         Orders orders = Convertor.toOrders("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
-        Map<Event, Integer> benefits = EventManager.toBenefits(orders, date);
+        Benefits benefits = EventManager.toBenefits(orders, date);
         assert benefits != null;
-        assertThat(benefits.get(CHRISTMAS_D_DAY)).isEqualTo(1_200);
-        assertThat(benefits.get(WEEKDAY)).isEqualTo(4_046);
-        assertThat(benefits.get(SPECIAL)).isEqualTo(1_000);
-        assertThat(benefits.get(GIFT)).isEqualTo(25_000);
+        assertThat(benefits.getBenefits().get(CHRISTMAS_D_DAY)).isEqualTo(1_200);
+        assertThat(benefits.getBenefits().get(WEEKDAY)).isEqualTo(4_046);
+        assertThat(benefits.getBenefits().get(SPECIAL)).isEqualTo(1_000);
+        assertThat(benefits.getBenefits().get(GIFT)).isEqualTo(25_000);
     }
 
     @ParameterizedTest
