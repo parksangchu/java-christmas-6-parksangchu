@@ -13,14 +13,14 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-class CalculatorTest {
+class EventManagerTest {
 
     @Test
     @DisplayName("혜택의 총합 계산")
     void calculateTotalBenefit() {
         Date date = new Date(3);
         Orders orders = Convertor.toOrders("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
-        int totalBenefit = Calculator.calculateTotalBenefit(Calculator.toBenefits(orders, date));
+        int totalBenefit = EventManager.calculateTotalBenefit(EventManager.toBenefits(orders, date));
         assertThat(totalBenefit).isEqualTo(31246);
     }
 
@@ -29,7 +29,7 @@ class CalculatorTest {
     void toBenefits() {
         Date date = new Date(3);
         Orders orders = Convertor.toOrders("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
-        Map<Event, Integer> benefits = Calculator.toBenefits(orders, date);
+        Map<Event, Integer> benefits = EventManager.toBenefits(orders, date);
         assert benefits != null;
         assertThat(benefits.get(CHRISTMAS_D_DAY)).isEqualTo(1_200);
         assertThat(benefits.get(WEEKDAY)).isEqualTo(4_046);
@@ -41,14 +41,15 @@ class CalculatorTest {
     @DisplayName("총 혜택 금액에 따른 뱃지 지급")
     @CsvSource(value = {"5500,별", "10500,트리", "21000,산타"})
     void toEventBadge(int input, String expect) {
-        String badge = Calculator.toEventBadge(input);
+        String badge = EventManager.toEventBadge(input);
         assertThat(badge).isEqualTo(expect);
     }
 
     @Test
     @DisplayName("총 결제 금액이 음수이면 0 반환")
     void calculatePaymentAmount() {
-        int paymentAmount = Calculator.calculatePaymentAmount(new Orders(List.of(new Order("아이스크림", 1))), 10000, 20000);
+        int paymentAmount = EventManager.calculatePaymentAmount(new Orders(List.of(new Order("아이스크림", 1))), 10000,
+                20000);
         assertThat(paymentAmount).isEqualTo(0);
     }
 }

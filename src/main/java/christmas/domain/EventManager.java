@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
-public class Calculator {
+public class EventManager {
     private static final int LOWER_LIMIT_AMOUNT_FOR_BENEFIT = 10_000;
 
     public static int calculateTotalBenefit(Map<Event, Integer> benefits) {
