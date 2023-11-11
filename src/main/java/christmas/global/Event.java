@@ -1,6 +1,6 @@
 package christmas.global;
 
-import static christmas.domain.Menu.CHAMPAGNE;
+import static christmas.global.Menu.CHAMPAGNE;
 
 public enum Event {
     CHRISTMAS_D_DAY("크리스마스 디데이 할인", 1_000, 100),

@@ -1,6 +1,6 @@
-package christmas.domain;
+package christmas.global;
 
-enum Menu {
+public enum Menu {
     MUSHROOM_SOUP("양송이수프", 6_000, "애피타이저"),
     TAPAS("타파스", 5_500, "애피타이저"),
     CAESAR_SALAD("시저샐러드", 8_000, "애피타이저"),

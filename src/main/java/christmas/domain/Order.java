@@ -2,6 +2,7 @@ package christmas.domain;
 
 import static christmas.global.Error.INVALID_ORDER;
 
+import christmas.global.Menu;
 import java.util.Objects;
 
 public class Order {
