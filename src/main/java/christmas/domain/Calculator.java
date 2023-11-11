@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
-public class Benefit {
+public class Calculator {
     private static final int LOWER_LIMIT_AMOUNT_FOR_BENEFIT = 10_000;
 
     public static int calculateTotalBenefit(Map<Event, Integer> benefits) {
@@ -41,6 +41,22 @@ public class Benefit {
                     .collect(Collectors.toMap(Entry::getKey, Entry::getValue));
         }
         return null;
+    }
+
+    public static int calculatePaymentAmount(Orders orders, int totalAmount, int totalBenefit) {
+        int paymentAmount;
+        if (orders.hasGift()) {
+            paymentAmount = totalAmount - totalBenefit + Event.GIFT.getInitPrice();
+            paymentAmount = minusValueToZero(paymentAmount);
+            return paymentAmount;
+        }
+        paymentAmount = totalAmount - totalBenefit;
+        paymentAmount = minusValueToZero(paymentAmount);
+        return paymentAmount;
+    }
+
+    private static int minusValueToZero(int paymentAmount) {
+        return Math.max(paymentAmount, 0);
     }
 
     public static String toEventBadge(int totalBenefit) {

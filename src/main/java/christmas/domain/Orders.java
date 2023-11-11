@@ -25,22 +25,6 @@ public class Orders {
                 .sum();
     }
 
-    public int calculatePaymentAmount(int totalAmount, int totalBenefit) {
-        int paymentAmount;
-        if (hasGift()) {
-            paymentAmount = totalAmount - totalBenefit + Event.GIFT.getInitPrice();
-            paymentAmount = minusValueToZero(paymentAmount);
-            return paymentAmount;
-        }
-        paymentAmount = totalAmount - totalBenefit;
-        paymentAmount = minusValueToZero(paymentAmount);
-        return paymentAmount;
-    }
-
-    private int minusValueToZero(int paymentAmount) {
-        return Math.max(paymentAmount, 0);
-    }
-
     public boolean hasGift() {
         return calculateTotalAmount() >= LOWER_LIMIT_AMOUNT_FOR_GIFT;
     }
