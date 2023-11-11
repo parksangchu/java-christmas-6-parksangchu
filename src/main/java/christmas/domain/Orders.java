@@ -26,10 +26,22 @@ public class Orders {
     }
 
     public int calculatePaymentAmount(int totalAmount, int totalBenefit) {
+        int paymentAmount;
         if (hasGift()) {
-            return totalAmount - totalBenefit + Event.GIFT.getInitPrice();
+            paymentAmount = totalAmount - totalBenefit + Event.GIFT.getInitPrice();
+            paymentAmount = minusValueToZero(paymentAmount);
+            return paymentAmount;
         }
-        return totalAmount - totalBenefit;
+        paymentAmount = totalAmount - totalBenefit;
+        paymentAmount = minusValueToZero(paymentAmount);
+        return paymentAmount;
+    }
+
+    private int minusValueToZero(int paymentAmount) {
+        if (paymentAmount < 0) {
+            return 0;
+        }
+        return paymentAmount;
     }
 
     public boolean hasGift() {
