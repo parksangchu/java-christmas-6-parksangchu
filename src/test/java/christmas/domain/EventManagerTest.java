@@ -1,11 +1,12 @@
 package christmas.domain;
 
-import static christmas.domain.Event.CHRISTMAS_D_DAY;
-import static christmas.domain.Event.GIFT;
-import static christmas.domain.Event.SPECIAL;
-import static christmas.domain.Event.WEEKDAY;
+import static christmas.global.Event.CHRISTMAS_D_DAY;
+import static christmas.global.Event.GIFT;
+import static christmas.global.Event.SPECIAL;
+import static christmas.global.Event.WEEKDAY;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+import christmas.global.Event;
 import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.DisplayName;

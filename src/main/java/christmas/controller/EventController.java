@@ -2,9 +2,9 @@ package christmas.controller;
 
 import christmas.domain.Convertor;
 import christmas.domain.Date;
-import christmas.domain.Event;
 import christmas.domain.EventManager;
 import christmas.domain.Orders;
+import christmas.global.Event;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 import java.util.Map;

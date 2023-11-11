@@ -1,6 +1,6 @@
 package christmas.domain;
 
-import static christmas.domain.Error.INVALID_ORDER;
+import static christmas.global.Error.INVALID_ORDER;
 
 import java.util.Arrays;
 import java.util.List;

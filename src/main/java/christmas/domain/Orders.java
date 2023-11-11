@@ -1,8 +1,8 @@
 package christmas.domain;
 
-import static christmas.domain.Error.INVALID_COUNT;
-import static christmas.domain.Error.INVALID_ORDER;
-import static christmas.domain.Error.INVALID_TYPE;
+import static christmas.global.Error.INVALID_COUNT;
+import static christmas.global.Error.INVALID_ORDER;
+import static christmas.global.Error.INVALID_TYPE;
 
 import java.util.List;
 

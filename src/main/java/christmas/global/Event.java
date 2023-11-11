@@ -1,4 +1,4 @@
-package christmas.domain;
+package christmas.global;
 
 import static christmas.domain.Menu.CHAMPAGNE;
 

@@ -12,8 +12,8 @@ import static christmas.view.Notice.TOTAL_PAYMENT_AMOUNT;
 import static christmas.view.Notice.WELCOME;
 
 import christmas.domain.Date;
-import christmas.domain.Event;
 import christmas.domain.Orders;
+import christmas.global.Event;
 import java.util.Map;
 
 public class OutputView {
