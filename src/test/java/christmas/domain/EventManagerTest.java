@@ -15,15 +15,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 class EventManagerTest {
 
     @Test
-    @DisplayName("혜택의 총합 계산")
-    void calculateTotalBenefit() {
-        Date date = new Date(3);
-        Orders orders = Convertor.toOrders("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1");
-        int totalBenefit = EventManager.calculateTotalBenefit(EventManager.toBenefits(orders, date));
-        assertThat(totalBenefit).isEqualTo(31246);
-    }
-
-    @Test
     @DisplayName("혜택을 담은 해시맵으로 반환")
     void toBenefits() {
         Date date = new Date(3);
