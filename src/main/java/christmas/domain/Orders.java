@@ -4,6 +4,7 @@ import static christmas.global.Error.INVALID_COUNT;
 import static christmas.global.Error.INVALID_ORDER;
 import static christmas.global.Error.INVALID_TYPE;
 
+import christmas.global.Event;
 import java.util.List;
 
 public class Orders {
@@ -17,6 +18,21 @@ public class Orders {
         validateTotalCount(orders);
         validateType(orders);
         this.orders = orders;
+    }
+
+    public int calculatePaymentAmount(int totalAmount, int totalBenefit) {
+        int paymentAmount = totalAmount - totalBenefit;
+        if (hasGift()) {
+            paymentAmount += Event.GIFT.getInitPrice();
+            paymentAmount = minusValueToZero(paymentAmount);
+            return paymentAmount;
+        }
+        paymentAmount = minusValueToZero(paymentAmount);
+        return paymentAmount;
+    }
+
+    private int minusValueToZero(int paymentAmount) {
+        return Math.max(paymentAmount, 0);
     }
 
     public int calculateTotalAmount() {

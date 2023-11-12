@@ -57,4 +57,12 @@ class OrdersTest {
         Orders orders = Convertor.toOrders("양송이수프-1,티본스테이크-3,바비큐립-4,초코케이크-5,아이스크림-3,제로콜라-2");
         assertThat(orders.countMains()).isEqualTo(7);
     }
+
+    @Test
+    @DisplayName("총 결제 금액이 음수이면 0 반환")
+    void calculatePaymentAmount() {
+        Orders orders = new Orders(List.of(new Order("아이스크림", 1)));
+        int paymentAmount = orders.calculatePaymentAmount(10000, 20000);
+        assertThat(paymentAmount).isEqualTo(0);
+    }
 }

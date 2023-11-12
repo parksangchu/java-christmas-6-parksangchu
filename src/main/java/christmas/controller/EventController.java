@@ -17,7 +17,7 @@ public class EventController {
         int totalOrderAmount = orders.calculateTotalAmount();
         Benefits benefits = EventManager.toBenefits(orders, date);
         int totalBenefit = benefits.calculateTotalBenefit();
-        int PaymentAmount = EventManager.calculatePaymentAmount(orders, totalOrderAmount, totalBenefit);
+        int PaymentAmount = orders.calculatePaymentAmount(totalOrderAmount, totalBenefit);
         Badge badge = EventManager.toEventBadge(totalBenefit);
         OutputView.printPreview(date);
         OutputView.printOrders(orders);

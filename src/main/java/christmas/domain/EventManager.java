@@ -29,22 +29,6 @@ public class EventManager {
         return new Benefits(benefits);
     }
 
-    public static int calculatePaymentAmount(Orders orders, int totalAmount, int totalBenefit) {
-        int paymentAmount;
-        if (orders.hasGift()) {
-            paymentAmount = totalAmount - totalBenefit + Event.GIFT.getInitPrice();
-            paymentAmount = minusValueToZero(paymentAmount);
-            return paymentAmount;
-        }
-        paymentAmount = totalAmount - totalBenefit;
-        paymentAmount = minusValueToZero(paymentAmount);
-        return paymentAmount;
-    }
-
-    private static int minusValueToZero(int paymentAmount) {
-        return Math.max(paymentAmount, 0);
-    }
-
     public static Badge toEventBadge(int totalBenefit) {
         if (isStarBadge(totalBenefit)) {
             return STAR;
