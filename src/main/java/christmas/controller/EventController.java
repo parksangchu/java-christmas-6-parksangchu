@@ -64,15 +64,13 @@ public class EventController {
         return totalBenefitAmount;
     }
 
-    private int createPaymentAmount(Orders orders, int totalOrderAmount, int totalBenefitAmount) {
+    private void createPaymentAmount(Orders orders, int totalOrderAmount, int totalBenefitAmount) {
         int paymentAmount = orders.calculatePaymentAmount(totalOrderAmount, totalBenefitAmount);
         OutputView.printPaymentAmount(paymentAmount);
-        return paymentAmount;
     }
 
-    private Badge createBadge(int totalBenefitAmount) {
+    private void createBadge(int totalBenefitAmount) {
         Badge badge = EventManager.toEventBadge(totalBenefitAmount);
         OutputView.printEventBadge(badge);
-        return badge;
     }
 }
