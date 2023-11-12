@@ -53,7 +53,7 @@ public class OutputView {
 
     public static void printBenefitDetail(Benefits benefits) {
         System.out.println(BENEFIT_LIST.getMessage());
-        if (benefits != null) {
+        if (benefits.getBenefits().size() != 0) {
             benefits.getBenefits()
                     .entrySet()
                     .stream()
