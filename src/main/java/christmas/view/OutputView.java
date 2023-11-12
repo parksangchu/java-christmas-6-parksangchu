@@ -38,7 +38,6 @@ public class OutputView {
     public static void printOrders(Orders orders) {
         System.out.println(ORDER_MENU.getMessage());
         orders.getOrders()
-                .stream()
                 .forEach(order -> System.out.printf("%s %d%s%n", order.getMenuName(), order.getCount(), COUNT_UNIT));
     }
 

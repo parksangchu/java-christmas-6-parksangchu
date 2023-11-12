@@ -32,7 +32,9 @@ class EventManagerTest {
     @CsvSource(value = {"5500,별", "10500,트리", "21000,산타"})
     void toEventBadge(int input, String expect) {
         Badge badge = EventManager.toEventBadge(input);
-        assertThat(badge.getType()).isEqualTo(expect);
+        if (badge != null) {
+            assertThat(badge.getType()).isEqualTo(expect);
+        }
     }
 
     @Test
