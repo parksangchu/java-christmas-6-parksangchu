@@ -11,7 +11,7 @@ public class Benefits {
         this.benefits = benefits;
     }
 
-    public int calculateTotalBenefit() {
+    public int calculateTotalBenefitAmount() {
         if (benefits != null) {
             return benefits.values()
                     .stream()

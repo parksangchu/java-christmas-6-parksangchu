@@ -14,25 +14,20 @@ public class EventController {
         OutputView.printWelcome();
         Date date = createDate();
         Orders orders = createOrders();
-        int totalOrderAmount = orders.calculateTotalAmount();
-        Benefits benefits = EventManager.toBenefits(orders, date);
-        int totalBenefit = benefits.calculateTotalBenefit();
-        int PaymentAmount = orders.calculatePaymentAmount(totalOrderAmount, totalBenefit);
-        Badge badge = EventManager.toEventBadge(totalBenefit);
-        OutputView.printPreview(date);
-        OutputView.printOrders(orders);
-        OutputView.printTotalOrderAmount(totalOrderAmount);
+        int totalOrderAmount = createTotalOrderAmount(orders);
         OutputView.printGift(orders.hasGift());
-        OutputView.printBenefitDetail(benefits);
-        OutputView.printTotalBenefitAmount(totalBenefit);
-        OutputView.printPaymentAmount(PaymentAmount);
-        OutputView.printEventBadge(badge);
+        Benefits benefits = createBenefits(orders, date);
+        int totalBenefitAmount = createTotalBenefitAmount(benefits);
+        createPaymentAmount(orders, totalOrderAmount, totalBenefitAmount);
+        createBadge(totalBenefitAmount);
     }
 
     private Date createDate() {
         while (true) {
             try {
-                return new Date(InputView.readDate());
+                Date date = new Date(InputView.readDate());
+                OutputView.printPreview(date);
+                return date;
             } catch (IllegalArgumentException e) {
                 OutputView.printError(e);
             }
@@ -42,10 +37,42 @@ public class EventController {
     private Orders createOrders() {
         while (true) {
             try {
-                return Convertor.toOrders(InputView.readOrder());
+                Orders orders = Convertor.toOrders(InputView.readOrder());
+                OutputView.printOrders(orders);
+                return orders;
             } catch (IllegalArgumentException e) {
                 OutputView.printError(e);
             }
         }
+    }
+
+    private int createTotalOrderAmount(Orders orders) {
+        int totalOrderAmount = orders.calculateTotalAmount();
+        OutputView.printTotalOrderAmount(totalOrderAmount);
+        return totalOrderAmount;
+    }
+
+    private Benefits createBenefits(Orders orders, Date date) {
+        Benefits benefits = EventManager.toBenefits(orders, date);
+        OutputView.printBenefitDetail(benefits);
+        return benefits;
+    }
+
+    private int createTotalBenefitAmount(Benefits benefits) {
+        int totalBenefitAmount = benefits.calculateTotalBenefitAmount();
+        OutputView.printTotalBenefitAmount(totalBenefitAmount);
+        return totalBenefitAmount;
+    }
+
+    private int createPaymentAmount(Orders orders, int totalOrderAmount, int totalBenefitAmount) {
+        int paymentAmount = orders.calculatePaymentAmount(totalOrderAmount, totalBenefitAmount);
+        OutputView.printPaymentAmount(paymentAmount);
+        return paymentAmount;
+    }
+
+    private Badge createBadge(int totalBenefitAmount) {
+        Badge badge = EventManager.toEventBadge(totalBenefitAmount);
+        OutputView.printEventBadge(badge);
+        return badge;
     }
 }
