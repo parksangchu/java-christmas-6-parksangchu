@@ -1,14 +1,15 @@
 package christmas.domain;
 
-import static christmas.domain.Badge.SANTA;
-import static christmas.domain.Badge.STAR;
-import static christmas.domain.Badge.TREE;
+import static christmas.global.Badge.SANTA;
+import static christmas.global.Badge.STAR;
+import static christmas.global.Badge.TREE;
 import static christmas.global.Event.CHRISTMAS_D_DAY;
 import static christmas.global.Event.GIFT;
 import static christmas.global.Event.SPECIAL;
 import static christmas.global.Event.WEEKDAY;
 import static christmas.global.Event.WEEKEND;
 
+import christmas.global.Badge;
 import christmas.global.Event;
 import java.util.EnumMap;
 import java.util.Map;
@@ -44,15 +45,15 @@ public class EventManager {
         return Math.max(paymentAmount, 0);
     }
 
-    public static String toEventBadge(int totalBenefit) {
+    public static Badge toEventBadge(int totalBenefit) {
         if (isStarBadge(totalBenefit)) {
-            return STAR.getType();
+            return STAR;
         }
         if (isTreeBadge(totalBenefit)) {
-            return TREE.getType();
+            return TREE;
         }
         if (isSantaBadge(totalBenefit)) {
-            return SANTA.getType();
+            return SANTA;
         }
         return null;
     }

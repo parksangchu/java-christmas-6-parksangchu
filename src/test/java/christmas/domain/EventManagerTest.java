@@ -6,6 +6,7 @@ import static christmas.global.Event.SPECIAL;
 import static christmas.global.Event.WEEKDAY;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+import christmas.global.Badge;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -30,8 +31,8 @@ class EventManagerTest {
     @DisplayName("총 혜택 금액에 따른 뱃지 지급")
     @CsvSource(value = {"5500,별", "10500,트리", "21000,산타"})
     void toEventBadge(int input, String expect) {
-        String badge = EventManager.toEventBadge(input);
-        assertThat(badge).isEqualTo(expect);
+        Badge badge = EventManager.toEventBadge(input);
+        assertThat(badge.getType()).isEqualTo(expect);
     }
 
     @Test

@@ -5,6 +5,7 @@ import christmas.domain.Convertor;
 import christmas.domain.Date;
 import christmas.domain.EventManager;
 import christmas.domain.Orders;
+import christmas.global.Badge;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
@@ -17,7 +18,7 @@ public class EventController {
         Benefits benefits = EventManager.toBenefits(orders, date);
         int totalBenefit = benefits.calculateTotalBenefit();
         int PaymentAmount = EventManager.calculatePaymentAmount(orders, totalOrderAmount, totalBenefit);
-        String badge = EventManager.toEventBadge(totalBenefit);
+        Badge badge = EventManager.toEventBadge(totalBenefit);
         OutputView.printPreview(date);
         OutputView.printOrders(orders);
         OutputView.printTotalOrderAmount(totalOrderAmount);

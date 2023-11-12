@@ -41,6 +41,10 @@ public class Orders {
                 .sum();
     }
 
+    public List<Order> getOrders() {
+        return orders;
+    }
+
     private void validateDuplicated(List<Order> orders) {
         if (isDuplicated(orders)) {
             throw new IllegalArgumentException(INVALID_ORDER.getMessage());
@@ -76,14 +80,5 @@ public class Orders {
                 .allMatch(Order::isBeverage);
     }
 
-
-    @Override
-    public String toString() {
-        StringBuilder output = new StringBuilder();
-        for (Order order : orders) {
-            output.append(order.toString()).append("\n");
-        }
-        return output.toString();
-    }
 
 }

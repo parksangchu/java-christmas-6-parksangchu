@@ -14,10 +14,13 @@ import static christmas.view.Notice.WELCOME;
 import christmas.domain.Benefits;
 import christmas.domain.Date;
 import christmas.domain.Orders;
+import christmas.global.Badge;
 
 public class OutputView {
     private static final String MONEY_UNIT = "원";
-    private static final String GIFT = CHAMPAGNE.getMenuName() + " 1개";
+    private static final String COUNT_UNIT = "개";
+
+    private static final String GIFT = CHAMPAGNE.getMenuName() + " 1" + COUNT_UNIT;
     private static final String NO_DATA = "없음";
 
     public static void printError(Exception e) {
@@ -29,12 +32,14 @@ public class OutputView {
     }
 
     public static void printPreview(Date date) {
-        System.out.printf(PREVIEW.getMessage(), date);
+        System.out.printf(PREVIEW.getMessage(), date.getValue());
     }
 
     public static void printOrders(Orders orders) {
         System.out.println(ORDER_MENU.getMessage());
-        System.out.println(orders);
+        orders.getOrders()
+                .stream()
+                .forEach(order -> System.out.printf("%s %d%s%n", order.getMenuName(), order.getCount(), COUNT_UNIT));
     }
 
     public static void printTotalOrderAmount(int totalAmount) {
@@ -80,10 +85,10 @@ public class OutputView {
         System.out.printf("%,d%s%n", PaymentAmount, MONEY_UNIT);
     }
 
-    public static void printEventBadge(String badge) {
+    public static void printEventBadge(Badge badge) {
         System.out.println(EVENT_BADGE.getMessage());
         if (badge != null) {
-            System.out.println(badge);
+            System.out.println(badge.getType());
             return;
         }
         System.out.println(NO_DATA);
