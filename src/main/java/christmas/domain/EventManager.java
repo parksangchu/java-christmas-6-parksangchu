@@ -10,11 +10,10 @@ import java.util.EnumMap;
 import java.util.Map;
 
 public class EventManager {
-    private static final int LOWER_LIMIT_AMOUNT_FOR_BENEFIT = 10_000;
 
     public static Benefits toBenefits(Orders orders, Date date) {
         Map<Event, Integer> benefits = new EnumMap<>(Event.class);
-        if (isEligible(orders)) {
+        if (orders.isEligible()) {
             benefits.put(CHRISTMAS_D_DAY, calculateDDayDiscount(date));
             benefits.put(WEEKDAY, calculateWeekdayDiscount(orders, date));
             benefits.put(WEEKEND, calculateWeekendDiscount(orders, date));
@@ -58,10 +57,4 @@ public class EventManager {
         }
         return 0;
     }
-
-
-    private static boolean isEligible(Orders orders) {
-        return orders.calculateTotalAmount() > LOWER_LIMIT_AMOUNT_FOR_BENEFIT;
-    }
-
 }

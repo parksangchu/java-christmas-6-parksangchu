@@ -8,7 +8,9 @@ import java.util.List;
 
 public class Orders {
     private static final int MAX_TOTAL_ORDER_COUNT = 20;
+    private static final int LOWER_LIMIT_AMOUNT_FOR_BENEFIT = 10_000;
     private static final int LOWER_LIMIT_AMOUNT_FOR_GIFT = 120_000;
+
     private final List<Order> orders;
 
 
@@ -40,9 +42,14 @@ public class Orders {
                 .sum();
     }
 
+    public boolean isEligible() {
+        return calculateTotalAmount() > LOWER_LIMIT_AMOUNT_FOR_BENEFIT;
+    }
+
     public boolean hasGift() {
         return calculateTotalAmount() >= LOWER_LIMIT_AMOUNT_FOR_GIFT;
     }
+
 
     public int countDesserts() {
         return orders.stream()
