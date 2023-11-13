@@ -20,4 +20,11 @@ class OrderTest {
         Order order = new Order("바비큐립", 10);
         assertThat(order.countMain()).isEqualTo(10);
     }
+
+    @Test
+    @DisplayName("삼각깁밥은 메뉴에 없기에 0 반환")
+    void calculateByMenu() {
+        Order order = new Order("삼각깁밥", 10);
+        assertThat(order.calculateByMenu()).isEqualTo(0);
+    }
 }
