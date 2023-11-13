@@ -3,6 +3,7 @@ package christmas.domain;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
+import java.util.Objects;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -39,6 +40,6 @@ class OrderTest {
         Order order3 = new Order("해산물파스타", 10);
         assertThat(order1.equals(order3)).isEqualTo(false);
         String order4 = "바비큐립";
-        assertThat(order1.equals(order4)).isEqualTo(false);
+        assertThat(Objects.equals(order1, order4)).isEqualTo(false);
     }
 }
