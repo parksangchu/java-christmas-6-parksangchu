@@ -86,10 +86,6 @@ public class OutputView {
 
     public static void printEventBadge(Badge badge) {
         System.out.println(EVENT_BADGE.getMessage());
-        if (badge != null) {
-            System.out.println(badge.getType());
-            return;
-        }
-        System.out.println(NO_DATA);
+        System.out.println(badge.getType());
     }
 }

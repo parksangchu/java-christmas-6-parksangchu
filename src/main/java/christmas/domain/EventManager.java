@@ -1,15 +1,11 @@
 package christmas.domain;
 
-import static christmas.global.Badge.SANTA;
-import static christmas.global.Badge.STAR;
-import static christmas.global.Badge.TREE;
 import static christmas.global.Event.CHRISTMAS_D_DAY;
 import static christmas.global.Event.GIFT;
 import static christmas.global.Event.SPECIAL;
 import static christmas.global.Event.WEEKDAY;
 import static christmas.global.Event.WEEKEND;
 
-import christmas.global.Badge;
 import christmas.global.Event;
 import java.util.EnumMap;
 import java.util.Map;
@@ -27,31 +23,6 @@ public class EventManager {
             benefits.put(GIFT, calculateGiftAmount(orders));
         }
         return new Benefits(benefits);
-    }
-
-    public static Badge toEventBadge(int totalBenefit) {
-        if (isStarBadge(totalBenefit)) {
-            return STAR;
-        }
-        if (isTreeBadge(totalBenefit)) {
-            return TREE;
-        }
-        if (isSantaBadge(totalBenefit)) {
-            return SANTA;
-        }
-        return null;
-    }
-
-    private static boolean isStarBadge(int totalBenefit) {
-        return totalBenefit >= STAR.getAmount() && totalBenefit < TREE.getAmount();
-    }
-
-    private static boolean isTreeBadge(int totalBenefit) {
-        return totalBenefit >= TREE.getAmount() && totalBenefit < SANTA.getAmount();
-    }
-
-    private static boolean isSantaBadge(int totalBenefit) {
-        return totalBenefit >= SANTA.getAmount();
     }
 
     private static int calculateDDayDiscount(Date date) {

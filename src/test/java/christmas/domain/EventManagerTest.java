@@ -6,11 +6,8 @@ import static christmas.global.Event.SPECIAL;
 import static christmas.global.Event.WEEKDAY;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-import christmas.global.Badge;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 
 class EventManagerTest {
 
@@ -24,16 +21,6 @@ class EventManagerTest {
         assertThat(benefits.getBenefits().get(WEEKDAY)).isEqualTo(4_046);
         assertThat(benefits.getBenefits().get(SPECIAL)).isEqualTo(1_000);
         assertThat(benefits.getBenefits().get(GIFT)).isEqualTo(25_000);
-    }
-
-    @ParameterizedTest
-    @DisplayName("총 혜택 금액에 따른 뱃지 지급")
-    @CsvSource(value = {"5500,별", "10500,트리", "21000,산타"})
-    void toEventBadge(int input, String expect) {
-        Badge badge = EventManager.toEventBadge(input);
-        if (badge != null) {
-            assertThat(badge.getType()).isEqualTo(expect);
-        }
     }
 
 }

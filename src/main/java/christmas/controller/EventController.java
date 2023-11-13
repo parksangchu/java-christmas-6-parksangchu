@@ -19,7 +19,7 @@ public class EventController {
         Benefits benefits = createBenefits(orders, date);
         int totalBenefitAmount = createTotalBenefitAmount(benefits);
         createPaymentAmount(orders, totalOrderAmount, totalBenefitAmount);
-        createBadge(totalBenefitAmount);
+        createBadge(benefits, totalBenefitAmount);
     }
 
     private Date createDate() {
@@ -69,8 +69,8 @@ public class EventController {
         OutputView.printPaymentAmount(paymentAmount);
     }
 
-    private void createBadge(int totalBenefitAmount) {
-        Badge badge = EventManager.toEventBadge(totalBenefitAmount);
+    private void createBadge(Benefits benefits, int totalBenefitAmount) {
+        Badge badge = benefits.toEventBadge(totalBenefitAmount);
         OutputView.printEventBadge(badge);
     }
 }
