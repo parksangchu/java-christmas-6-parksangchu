@@ -19,7 +19,10 @@ public class Order {
 
     public int calculateByMenu() {
         Menu menu = Menu.from(menuName);
-        return menu.getPrice() * count;
+        if (menu != null) {
+            return menu.getPrice() * count;
+        }
+        return 0;
     }
 
 
