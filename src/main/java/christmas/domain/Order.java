@@ -1,6 +1,7 @@
 package christmas.domain;
 
 import static christmas.global.Error.INVALID_ORDER;
+import static christmas.global.Menu.NONE;
 
 import christmas.global.Menu;
 import java.util.Objects;
@@ -19,19 +20,13 @@ public class Order {
 
     public int calculateByMenu() {
         Menu menu = Menu.from(menuName);
-        if (menu != null) {
-            return menu.getPrice() * count;
-        }
-        return 0;
+        return menu.getPrice() * count;
     }
 
 
     public boolean isBeverage() {
         Menu menu = Menu.from(menuName);
-        if (menu != null) {
-            return menu.getType().equals("음료");
-        }
-        return false;
+        return menu.getType().equals("음료");
     }
 
     public int countDessert() {
@@ -43,10 +38,7 @@ public class Order {
 
     private boolean isDessert() {
         Menu menu = Menu.from(menuName);
-        if (menu != null) {
-            return menu.getType().equals("디저트");
-        }
-        return false;
+        return menu.getType().equals("디저트");
     }
 
     public int countMain() {
@@ -59,10 +51,7 @@ public class Order {
 
     private boolean isMain() {
         Menu menu = Menu.from(menuName);
-        if (menu != null) {
-            return menu.getType().equals("메인");
-        }
-        return false;
+        return menu.getType().equals("메인");
     }
 
     public String getMenuName() {
@@ -96,7 +85,7 @@ public class Order {
     }
 
     private boolean isInvalidMenu(String menu) {
-        return Menu.from(menu) == null;
+        return Menu.from(menu) == NONE;
     }
 
     private void validateCount(int count) {
