@@ -57,7 +57,7 @@ public class OutputView {
 
     public static void printBenefitDetail(Benefits benefits) {
         System.out.println(BENEFIT_LIST.getMessage());
-        if (!benefits.getBenefits().isEmpty()) {
+        if (isValidValue(benefits)) {
             benefits.getBenefits()
                     .entrySet()
                     .stream()
@@ -68,6 +68,21 @@ public class OutputView {
             return;
         }
         System.out.println(NO_DATA);
+    }
+
+    private static boolean isValidValue(Benefits benefits) {
+        return !isZeroValue(benefits) && !isEmpty(benefits);
+    }
+
+    private static boolean isZeroValue(Benefits benefits) {
+        return benefits.getBenefits()
+                .values()
+                .stream()
+                .allMatch(count -> count == 0);
+    }
+
+    private static boolean isEmpty(Benefits benefits) {
+        return benefits.getBenefits().isEmpty();
     }
 
     public static void printTotalBenefitAmount(int totalBenefitAmount) {
