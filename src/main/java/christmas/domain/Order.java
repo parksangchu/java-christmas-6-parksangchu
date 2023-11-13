@@ -64,13 +64,10 @@ public class Order {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
+        if (o instanceof Order order) {
+            return menuName.equals(order.menuName);
         }
-        if (!(o instanceof Order order)) {
-            return false;
-        }
-        return Objects.equals(menuName, order.menuName);
+        return false;
     }
 
     @Override

@@ -38,7 +38,7 @@ class OrderTest {
         assertThat(order1.equals(order2)).isEqualTo(true);
         Order order3 = new Order("해산물파스타", 10);
         assertThat(order1.equals(order3)).isEqualTo(false);
-//        String order4 = "바비큐립";
-//        assertThat(order1.equals(order4)).isEqualTo(false);
+        String order4 = "바비큐립";
+        assertThat(order1.equals(order4)).isEqualTo(false);
     }
 }
