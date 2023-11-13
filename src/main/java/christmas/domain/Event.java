@@ -9,18 +9,18 @@ public enum Event {
     SPECIAL("특별 할인", 1_000, 0),
     GIFT("증정 이벤트", CHAMPAGNE.getPrice(), 0);
 
-    private final String discountName;
+    private final String eventName;
     private final int initPrice;
     private final int unitPrice;
 
-    Event(String discountName, int initPrice, int unitPrice) {
-        this.discountName = discountName;
+    Event(String eventName, int initPrice, int unitPrice) {
+        this.eventName = eventName;
         this.initPrice = initPrice;
         this.unitPrice = unitPrice;
     }
 
-    public String getDiscountName() {
-        return discountName;
+    public String getEventName() {
+        return eventName;
     }
 
     public int getInitPrice() {

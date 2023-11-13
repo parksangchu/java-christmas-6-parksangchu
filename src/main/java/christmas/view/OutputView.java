@@ -62,7 +62,7 @@ public class OutputView {
                     .entrySet()
                     .stream()
                     .filter(entry -> entry.getValue() != 0)
-                    .forEach(entry -> System.out.printf("%s: -%,d%s%n", entry.getKey().getDiscountName(),
+                    .forEach(entry -> System.out.printf("%s: -%,d%s%n", entry.getKey().getEventName(),
                             entry.getValue(),
                             MONEY_UNIT));
             return;
