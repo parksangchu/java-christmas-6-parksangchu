@@ -1,10 +1,9 @@
 package christmas.domain;
 
-import static christmas.global.Error.INVALID_COUNT;
-import static christmas.global.Error.INVALID_ORDER;
-import static christmas.global.Error.INVALID_TYPE;
+import static christmas.domain.Error.INVALID_COUNT;
+import static christmas.domain.Error.INVALID_ORDER;
+import static christmas.domain.Error.INVALID_TYPE;
 
-import christmas.global.Event;
 import java.util.List;
 
 public class Orders {

@@ -1,13 +1,11 @@
 package christmas.domain;
 
 
-import static christmas.global.Badge.NONE;
-import static christmas.global.Badge.SANTA;
-import static christmas.global.Badge.STAR;
-import static christmas.global.Badge.TREE;
+import static christmas.domain.Badge.NONE;
+import static christmas.domain.Badge.SANTA;
+import static christmas.domain.Badge.STAR;
+import static christmas.domain.Badge.TREE;
 
-import christmas.global.Badge;
-import christmas.global.Event;
 import java.util.Map;
 
 public class Benefits {

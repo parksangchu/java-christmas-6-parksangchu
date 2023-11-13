@@ -1,11 +1,11 @@
 package christmas.controller;
 
+import christmas.domain.Badge;
 import christmas.domain.Benefits;
 import christmas.domain.Convertor;
 import christmas.domain.Date;
 import christmas.domain.EventManager;
 import christmas.domain.Orders;
-import christmas.global.Badge;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 

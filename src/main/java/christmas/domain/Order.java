@@ -1,9 +1,8 @@
 package christmas.domain;
 
-import static christmas.global.Error.INVALID_ORDER;
-import static christmas.global.Menu.NONE;
+import static christmas.domain.Error.INVALID_ORDER;
+import static christmas.domain.Menu.NONE;
 
-import christmas.global.Menu;
 import java.util.Objects;
 
 public class Order {

@@ -1,6 +1,6 @@
 package christmas.view;
 
-import static christmas.global.Menu.CHAMPAGNE;
+import static christmas.domain.Menu.CHAMPAGNE;
 import static christmas.view.Notice.BENEFIT_LIST;
 import static christmas.view.Notice.EVENT_BADGE;
 import static christmas.view.Notice.GIFT_MENU;
@@ -11,10 +11,10 @@ import static christmas.view.Notice.TOTAL_ORDER_AMOUNT;
 import static christmas.view.Notice.TOTAL_PAYMENT_AMOUNT;
 import static christmas.view.Notice.WELCOME;
 
+import christmas.domain.Badge;
 import christmas.domain.Benefits;
 import christmas.domain.Date;
 import christmas.domain.Orders;
-import christmas.global.Badge;
 
 public class OutputView {
     private static final String MONEY_UNIT = "원";

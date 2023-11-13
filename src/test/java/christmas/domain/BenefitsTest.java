@@ -1,9 +1,8 @@
 package christmas.domain;
 
-import static christmas.global.Badge.NONE;
+import static christmas.domain.Badge.NONE;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-import christmas.global.Badge;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

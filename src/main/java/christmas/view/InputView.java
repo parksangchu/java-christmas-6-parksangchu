@@ -1,6 +1,6 @@
 package christmas.view;
 
-import static christmas.global.Error.INVALID_DATE;
+import static christmas.domain.Error.INVALID_DATE;
 import static christmas.view.Notice.ASK_DATE_OF_VISIT;
 import static christmas.view.Notice.ASK_MENU_AND_COUNT;
 
