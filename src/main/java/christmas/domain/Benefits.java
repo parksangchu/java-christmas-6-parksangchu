@@ -18,13 +18,10 @@ public class Benefits {
     }
 
     public int calculateTotalBenefitAmount() {
-        if (benefits != null) {
-            return benefits.values()
-                    .stream()
-                    .mapToInt(amount -> amount)
-                    .sum();
-        }
-        return 0;
+        return benefits.values()
+                .stream()
+                .mapToInt(amount -> amount)
+                .sum();
     }
 
     public Badge toEventBadge(int totalBenefit) {
