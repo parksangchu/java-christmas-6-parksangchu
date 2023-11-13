@@ -18,6 +18,7 @@ class OrderTest {
     @DisplayName("메인이 있으면 개수 반환")
     void countMain() {
         Order order = new Order("바비큐립", 10);
-        assertThat(order.countMain()).isEqualTo(10);
+        int count = order.countMain();
+        assertThat(count).isEqualTo(10);
     }
 }

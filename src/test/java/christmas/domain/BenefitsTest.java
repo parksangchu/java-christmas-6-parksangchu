@@ -1,5 +1,6 @@
 package christmas.domain;
 
+import static christmas.global.Badge.NONE;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import christmas.global.Badge;
@@ -24,7 +25,7 @@ class BenefitsTest {
     @CsvSource(value = {"5500,별", "10500,트리", "21000,산타"})
     void toEventBadge(int input, String expect) {
         Badge badge = benefits.toEventBadge(input);
-        if (badge != null) {
+        if (badge != NONE) {
             assertThat(badge.getType()).isEqualTo(expect);
         }
     }
