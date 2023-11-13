@@ -62,7 +62,7 @@
 
 ## controller
 
-- [x] EventController
+- [x] **EventController**
     - 예외 발생시 해당 부분을 반복시킨다.
     - view의 내용을 domain에 전달한다.
     - domain의 내용을 view에 전달한다.
