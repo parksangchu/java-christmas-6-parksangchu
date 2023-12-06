@@ -9,7 +9,8 @@ public class OrderGroup {
 
     public OrderGroup(List<Order> orders) {
         validateDuplicated(orders);
-        validateSize(orders);
+        validateRange(orders);
+        validateCategory(orders);
         this.orders = orders;
     }
 
@@ -21,7 +22,7 @@ public class OrderGroup {
         }
     }
 
-    private void validateSize(List<Order> orders) {
+    private void validateRange(List<Order> orders) {
         if (orders.stream()
                 .mapToInt(Order::getCount)
                 .sum() > MAX_COUNT) {
