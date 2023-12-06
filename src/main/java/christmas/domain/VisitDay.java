@@ -11,6 +11,7 @@ import java.time.LocalDate;
 public class VisitDay {
     private static final String INVALID_RANGE = "[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.";
     private static final LocalDate THIS_CHRISTMAS = LocalDate.of(THIS_YEAR.getValue(), THIS_MONTH.getValue(), 25);
+    private static final int D_DAY_START = 1;
     private final LocalDate localDate;
 
     public VisitDay(int day) {
@@ -35,6 +36,10 @@ public class VisitDay {
 
     public boolean isBeforeChristmas() {
         return localDate.isBefore(THIS_CHRISTMAS) || localDate.equals(THIS_CHRISTMAS);
+    }
+
+    public int calculateDDay() {
+        return localDate.getDayOfMonth() - D_DAY_START;
     }
 
     public int getDay() {

@@ -1,11 +1,14 @@
 package christmas.controller;
 
+import christmas.domain.Event;
+import christmas.domain.EventManager;
 import christmas.domain.Order;
 import christmas.domain.OrderGroup;
 import christmas.domain.VisitDay;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Controller {
@@ -17,6 +20,9 @@ public class Controller {
         OutputView.printOrders(orderGroup.getOrders());
         int totalPrice = orderGroup.getPrice();
         OutputView.printTotalPrice(totalPrice);
+        Map<Event, Integer> benefits = EventManager.createBenefits(visitDay, orderGroup);
+        OutputView.printGift(orderGroup);
+        OutputView.printBenefits(benefits);
     }
 
     private VisitDay initVisitDay() {
