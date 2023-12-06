@@ -1,5 +1,7 @@
 package christmas.domain;
 
+import java.util.Objects;
+
 public class Order {
     private static final String ORDER_REGEX = "[가-힣]+-[1-9][0-9]*";
     private static final String DELIMITER = "-";
@@ -36,5 +38,25 @@ public class Order {
     private static String[] getSeparatedOrder(String order) {
         validatePattern(order);
         return order.split(DELIMITER);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Order order)) {
+            return false;
+        }
+        return menu == order.menu;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(menu);
+    }
+
+    public int getCount() {
+        return count;
     }
 }
