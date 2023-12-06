@@ -1,5 +1,6 @@
 package christmas.controller;
 
+import christmas.domain.Badge;
 import christmas.domain.BenefitGroup;
 import christmas.domain.Event;
 import christmas.domain.EventManager;
@@ -18,18 +19,7 @@ public class Controller {
         OutputView.printStartNotice();
         VisitDay visitDay = initVisitDay();
         OrderGroup orderGroup = initOrderGroup();
-        OutputView.printPreviewNotice(visitDay.getDay());
-        OutputView.printOrders(orderGroup.getOrders());
-        int totalPrice = orderGroup.getPrice();
-        OutputView.printTotalPrice(totalPrice);
-        Map<Event, Integer> benefits = EventManager.createBenefits(visitDay, orderGroup);
-        OutputView.printGift(orderGroup);
-        OutputView.printBenefits(benefits);
-        BenefitGroup benefitGroup = new BenefitGroup(benefits);
-        int totalBenefitAmount = benefitGroup.calculateBenefitAmount();
-        OutputView.printTotalBenefitAmount(totalBenefitAmount);
-        int paymentAmount = PaymentManager.calculatePaymentAmount(totalPrice, totalBenefitAmount);
-        OutputView.printPaymentAmount(paymentAmount);
+        printPreview(visitDay, orderGroup);
     }
 
     private VisitDay initVisitDay() {
@@ -54,5 +44,22 @@ public class Controller {
                 OutputView.printError(e);
             }
         }
+    }
+
+    private void printPreview(VisitDay visitDay, OrderGroup orderGroup) {
+        OutputView.printPreviewNotice(visitDay.getDay());
+        OutputView.printOrders(orderGroup.getOrders());
+        int totalPrice = orderGroup.getPrice();
+        OutputView.printTotalPrice(totalPrice);
+        Map<Event, Integer> benefits = EventManager.createBenefits(visitDay, orderGroup);
+        OutputView.printGift(orderGroup);
+        OutputView.printBenefits(benefits);
+        BenefitGroup benefitGroup = new BenefitGroup(benefits);
+        int totalBenefitAmount = benefitGroup.calculateBenefitAmount();
+        OutputView.printTotalBenefitAmount(totalBenefitAmount);
+        int paymentAmount = PaymentManager.calculatePaymentAmount(totalPrice, totalBenefitAmount);
+        OutputView.printPaymentAmount(paymentAmount);
+        Badge badge = Badge.of(totalBenefitAmount);
+        OutputView.printBadge(badge);
     }
 }
