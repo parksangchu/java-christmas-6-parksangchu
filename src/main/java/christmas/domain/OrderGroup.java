@@ -36,4 +36,14 @@ public class OrderGroup {
             throw new IllegalArgumentException(INVALID_ORDER_ERROR);
         }
     }
+
+    public int getPrice() {
+        return orders.stream()
+                .mapToInt(Order::getPrice)
+                .sum();
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
 }

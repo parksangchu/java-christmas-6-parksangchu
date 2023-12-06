@@ -15,6 +15,8 @@ public class Controller {
         OrderGroup orderGroup = initOrderGroup();
         OutputView.printPreviewNotice(visitDay.getDay());
         OutputView.printOrders(orderGroup.getOrders());
+        int totalPrice = orderGroup.getPrice();
+        OutputView.printTotalPrice(totalPrice);
     }
 
     private VisitDay initVisitDay() {
