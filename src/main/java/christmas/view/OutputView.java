@@ -1,6 +1,5 @@
 package christmas.view;
 
-import static christmas.domain.Event.GIFT;
 import static christmas.global.Constants.THIS_MONTH;
 
 import christmas.domain.Event;
@@ -11,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 public class OutputView {
+    private static final String NONE = "없음";
     private static final String START_NOTICE_FORMAT = "안녕하세요! 우테코 식당 %d월 이벤트 플래너입니다.\n";
     private static final String PREVIEW_NOTICE_FORMAT = "%d월 %d일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!\n";
     private static final String ORDERS_NOTICE = "\n<주문 메뉴>";
@@ -18,8 +18,8 @@ public class OutputView {
     private static final String TOTAL_PRICE_FORMAT = "\n<할인 전 총주문 금액>\n%,d원\n";
     private static final String GIFT_NOTICE = "\n<증정 메뉴>";
     private static final String GIFT_FORMAT = "%s %d개\n";
-    private static final String NONE = "없음";
-    private static final String BENEFITS_NOTICE =
+    private static final String BENEFITS_NOTICE = "\n<혜택 내역>";
+    private static final String BENEFITS_FORMAT = "%s: -%,d원";
 
     public static void printError(Exception e) {
         System.out.println(e.getMessage());
@@ -45,14 +45,22 @@ public class OutputView {
 
     public static void printGift(OrderGroup orderGroup) {
         System.out.println(GIFT_NOTICE);
-        if (orderGroup.hasGift()){
+        if (orderGroup.hasGift()) {
             System.out.printf(GIFT_FORMAT, Gift.getName(), Gift.getCount());
             return;
         }
         System.out.println(NONE);
     }
+
     public static void printBenefits(Map<Event, Integer> benefits) {
-
+        System.out.println(BENEFITS_NOTICE);
+        if (benefits.size() != 0) {
+            benefits.entrySet()
+                    .forEach(entry -> System.out.printf(BENEFITS_FORMAT
+                            , entry.getKey().getName()
+                            , entry.getValue()));
+            return;
+        }
+        System.out.println(NONE);
     }
-
 }
