@@ -27,7 +27,7 @@ public class InputView {
         }
     }
 
-    private static List<String> readOrders() {
+    public static List<String> readOrders() {
         System.out.println(ASK_ORDERS);
         String input = Console.readLine();
         return Arrays.stream(input.split(DELIMITER))
