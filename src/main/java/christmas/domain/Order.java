@@ -40,6 +40,10 @@ public class Order {
         return Integer.parseInt(count);
     }
 
+    public int getPrice() {
+        return menu.getPrice() * count;
+    }
+
     public boolean isMain() {
         return MenuCategory.of(menu)
                 .equals(MenuCategory.MAIN);
@@ -69,6 +73,10 @@ public class Order {
     @Override
     public int hashCode() {
         return Objects.hash(menu);
+    }
+
+    public String getMenuName() {
+        return menu.getName();
     }
 
     public int getCount() {
