@@ -5,6 +5,7 @@ import christmas.domain.Event;
 import christmas.domain.EventManager;
 import christmas.domain.Order;
 import christmas.domain.OrderGroup;
+import christmas.domain.PaymentManager;
 import christmas.domain.VisitDay;
 import christmas.view.InputView;
 import christmas.view.OutputView;
@@ -27,6 +28,8 @@ public class Controller {
         BenefitGroup benefitGroup = new BenefitGroup(benefits);
         int totalBenefitAmount = benefitGroup.calculateBenefitAmount();
         OutputView.printTotalBenefitAmount(totalBenefitAmount);
+        int paymentAmount = PaymentManager.calculatePaymentAmount(totalPrice, totalBenefitAmount);
+        OutputView.printPaymentAmount(paymentAmount);
     }
 
     private VisitDay initVisitDay() {

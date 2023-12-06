@@ -22,6 +22,7 @@ public class OutputView {
     private static final String BENEFITS_FORMAT = "%s: -%,d원\n";
     private static final String TOTAL_BENEFIT_AMOUNT_FORMAT = "\n<총혜택 금액>\n-%,d원\n";
     private static final String ZERO_TOTAL_BENEFIT_AMOUNT = "0원";
+    private static final String PAYMENT_AMOUNT_FORMAT = "\n<할인 후 예상 결제 금액>\n%,d원";
 
     public static void printError(Exception e) {
         System.out.println(e.getMessage());
@@ -71,5 +72,9 @@ public class OutputView {
             return;
         }
         System.out.println(ZERO_TOTAL_BENEFIT_AMOUNT);
+    }
+
+    public static void printPaymentAmount(int paymentAmount) {
+        System.out.printf(PAYMENT_AMOUNT_FORMAT, paymentAmount);
     }
 }
