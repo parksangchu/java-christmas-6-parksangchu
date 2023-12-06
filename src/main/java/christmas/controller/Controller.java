@@ -13,6 +13,8 @@ public class Controller {
         OutputView.printStartNotice();
         VisitDay visitDay = initVisitDay();
         OrderGroup orderGroup = initOrderGroup();
+        OutputView.printPreviewNotice(visitDay.getDay());
+        OutputView.printOrders(orderGroup.getOrders());
     }
 
     private VisitDay initVisitDay() {

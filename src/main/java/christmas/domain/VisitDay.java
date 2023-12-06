@@ -36,4 +36,8 @@ public class VisitDay {
     public boolean isBeforeChristmas() {
         return localDate.isBefore(THIS_CHRISTMAS) || localDate.equals(THIS_CHRISTMAS);
     }
+
+    public int getDay() {
+        return localDate.getDayOfMonth();
+    }
 }
