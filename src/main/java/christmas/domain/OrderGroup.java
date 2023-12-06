@@ -28,4 +28,11 @@ public class OrderGroup {
             throw new IllegalArgumentException(INVALID_ORDER_ERROR);
         }
     }
+
+    private void validateCategory(List<Order> orders) {
+        if (orders.stream()
+                .allMatch(Order::isDrink)) {
+            throw new IllegalArgumentException(INVALID_ORDER_ERROR);
+        }
+    }
 }

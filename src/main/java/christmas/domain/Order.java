@@ -16,6 +16,17 @@ public class Order {
         this.count = getCount(separatedOrder);
     }
 
+    private static void validatePattern(String order) {
+        if (!order.matches(ORDER_REGEX)) {
+            throw new IllegalArgumentException(INVALID_ORDER_ERROR);
+        }
+    }
+
+    private static String[] getSeparatedOrder(String order) {
+        validatePattern(order);
+        return order.split(DELIMITER);
+    }
+
     private Menu getMenu(String[] separatedOrder) {
         Menu menu = Menu.of(separatedOrder[0]);
         if (menu.equals(Menu.NONE)) {
@@ -29,15 +40,19 @@ public class Order {
         return Integer.parseInt(count);
     }
 
-    private static void validatePattern(String order) {
-        if (!order.matches(ORDER_REGEX)) {
-            throw new IllegalArgumentException(INVALID_ORDER_ERROR);
-        }
+    public boolean isMain() {
+        return MenuCategory.of(menu)
+                .equals(MenuCategory.MAIN);
     }
 
-    private static String[] getSeparatedOrder(String order) {
-        validatePattern(order);
-        return order.split(DELIMITER);
+    public boolean isDessert() {
+        return MenuCategory.of(menu)
+                .equals(MenuCategory.DESSERT);
+    }
+
+    public boolean isDrink() {
+        return MenuCategory.of(menu)
+                .equals(MenuCategory.DRINK);
     }
 
     @Override
