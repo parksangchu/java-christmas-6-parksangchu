@@ -22,7 +22,7 @@ public class OutputView {
     private static final String BENEFITS_NOTICE = "\n<혜택 내역>";
     private static final String BENEFITS_FORMAT = "%s: -%,d원\n";
     private static final String TOTAL_BENEFIT_AMOUNT_FORMAT = "\n<총혜택 금액>\n-%,d원\n";
-    private static final String ZERO_TOTAL_BENEFIT_AMOUNT = "0원";
+    private static final String ZERO_TOTAL_BENEFIT_AMOUNT = "\n<총혜택 금액>\n0원";
     private static final String PAYMENT_AMOUNT_FORMAT = "\n<할인 후 예상 결제 금액>\n%,d원\n";
     private static final String BADGE_FORMAT = "\n<%d월 이벤트 배지>\n%s\n";
 
