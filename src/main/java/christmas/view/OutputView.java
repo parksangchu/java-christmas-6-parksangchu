@@ -19,7 +19,9 @@ public class OutputView {
     private static final String GIFT_NOTICE = "\n<증정 메뉴>";
     private static final String GIFT_FORMAT = "%s %d개\n";
     private static final String BENEFITS_NOTICE = "\n<혜택 내역>";
-    private static final String BENEFITS_FORMAT = "%s: -%,d원";
+    private static final String BENEFITS_FORMAT = "%s: -%,d원\n";
+    private static final String TOTAL_BENEFIT_AMOUNT_FORMAT = "\n<총혜택 금액>\n-%,d원\n";
+    private static final String ZERO_TOTAL_BENEFIT_AMOUNT = "0원";
 
     public static void printError(Exception e) {
         System.out.println(e.getMessage());
@@ -54,13 +56,20 @@ public class OutputView {
 
     public static void printBenefits(Map<Event, Integer> benefits) {
         System.out.println(BENEFITS_NOTICE);
-        if (benefits.size() != 0) {
-            benefits.entrySet()
-                    .forEach(entry -> System.out.printf(BENEFITS_FORMAT
-                            , entry.getKey().getName()
-                            , entry.getValue()));
+        if (!benefits.isEmpty()) {
+            benefits.forEach((key, value) -> System.out.printf(BENEFITS_FORMAT
+                    , key.getName()
+                    , value));
             return;
         }
         System.out.println(NONE);
+    }
+
+    public static void printTotalBenefitAmount(int totalBenefitAmount) {
+        if (totalBenefitAmount != 0) {
+            System.out.printf(TOTAL_BENEFIT_AMOUNT_FORMAT, totalBenefitAmount);
+            return;
+        }
+        System.out.println(ZERO_TOTAL_BENEFIT_AMOUNT);
     }
 }

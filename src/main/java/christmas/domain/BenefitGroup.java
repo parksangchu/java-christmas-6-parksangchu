@@ -8,4 +8,11 @@ public class BenefitGroup {
     public BenefitGroup(Map<Event, Integer> benefits) {
         this.benefits = benefits;
     }
+
+    public int calculateBenefitAmount() {
+        return benefits.values()
+                .stream()
+                .mapToInt(discount -> discount)
+                .sum();
+    }
 }

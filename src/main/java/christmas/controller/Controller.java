@@ -1,5 +1,6 @@
 package christmas.controller;
 
+import christmas.domain.BenefitGroup;
 import christmas.domain.Event;
 import christmas.domain.EventManager;
 import christmas.domain.Order;
@@ -23,6 +24,9 @@ public class Controller {
         Map<Event, Integer> benefits = EventManager.createBenefits(visitDay, orderGroup);
         OutputView.printGift(orderGroup);
         OutputView.printBenefits(benefits);
+        BenefitGroup benefitGroup = new BenefitGroup(benefits);
+        int totalBenefitAmount = benefitGroup.calculateBenefitAmount();
+        OutputView.printTotalBenefitAmount(totalBenefitAmount);
     }
 
     private VisitDay initVisitDay() {
