@@ -8,6 +8,7 @@ public class Controller {
     public void start() {
         OutputView.printStartNotice();
         VisitDay visitDay = initVisitDay();
+        
     }
 
     private VisitDay initVisitDay() {
