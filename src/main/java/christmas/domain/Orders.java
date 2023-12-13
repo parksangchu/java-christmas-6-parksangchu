@@ -32,8 +32,8 @@ public class Orders {
 
     private void validateCount(List<Order> orders) {
         if (orders.stream()
-                .map(Order::getCount)
-                .count() > MAX_COUNT) {
+                .mapToInt(Order::getCount)
+                .sum() > MAX_COUNT) {
             throw new IllegalArgumentException(ErrorMessage.ORDER.getMessage());
         }
     }

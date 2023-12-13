@@ -19,7 +19,7 @@ public enum Badge {
 
     public static Badge from(int totalBenefitAmount) {
         return Arrays.stream(values())
-                .filter(badge -> totalBenefitAmount <= badge.criteria)
+                .filter(badge -> totalBenefitAmount >= badge.criteria)
                 .findFirst()
                 .orElse(NONE);
     }
