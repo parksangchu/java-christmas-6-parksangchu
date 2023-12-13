@@ -1,5 +1,6 @@
 package christmas.controller;
 
+import christmas.domain.Badge;
 import christmas.domain.Benefits;
 import christmas.domain.EventManager;
 import christmas.domain.Gift;
@@ -26,6 +27,8 @@ public class Controller {
         OutputView.printBenefits(benefits.getBenefits());
         OutputView.printTotalBenefitAmount(Payment.calculateTotalBenefitAmount(benefits));
         OutputView.printPaymentAmount(Payment.calculatePaymentAmount(orders, benefits));
+        Badge badge = Badge.from(Payment.calculateTotalBenefitAmount(benefits));
+        OutputView.printBadge(badge.getName());
     }
 
     private VisitDay createVisitDay() {
