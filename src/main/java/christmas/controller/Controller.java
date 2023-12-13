@@ -25,6 +25,7 @@ public class Controller {
         Benefits benefits = eventManager.calculateBenefits();
         OutputView.printBenefits(benefits.getBenefits());
         OutputView.printTotalBenefitAmount(Payment.calculateTotalBenefitAmount(benefits));
+        OutputView.printPaymentAmount(Payment.calculatePaymentAmount(orders, benefits));
     }
 
     private VisitDay createVisitDay() {

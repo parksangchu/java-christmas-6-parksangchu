@@ -18,7 +18,6 @@ public class Util {
 
     private enum Regex {
         SPACE(" "), NO_SPACE(""),
-        SQUARE_BRACKETS_START("["), SQUARE_BRACKETS_END("]"),
         COMMA(","), HYPHEN("-");
 
         private final String regex;
