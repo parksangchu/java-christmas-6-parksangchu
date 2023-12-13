@@ -12,4 +12,12 @@ public class Gift {
     public static int calculatePrice() {
         return MENU.calculatePrice(COUNT);
     }
+
+    public static String getMenuName() {
+        return MENU.getName();
+    }
+
+    public static int getCount() {
+        return COUNT;
+    }
 }

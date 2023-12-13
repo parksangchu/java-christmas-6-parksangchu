@@ -44,6 +44,20 @@ public class Orders {
                 .sum();
     }
 
+    public int countMain() {
+        return orders.stream()
+                .filter(Order::isMain)
+                .mapToInt(Order::getCount)
+                .sum();
+    }
+
+    public int countDessert() {
+        return orders.stream()
+                .filter(Order::isDessert)
+                .mapToInt(Order::getCount)
+                .sum();
+    }
+
     public List<Order> getOrders() {
         return Collections.unmodifiableList(orders);
     }
