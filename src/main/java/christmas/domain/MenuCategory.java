@@ -33,4 +33,16 @@ public enum MenuCategory {
                 .findAny()
                 .orElseThrow(() -> new IllegalArgumentException(ErrorMessage.ORDER.getMessage()));
     }
+
+    public boolean isMain() {
+        return this == MAIN;
+    }
+
+    public boolean isDessert() {
+        return this == DESSERT;
+    }
+
+    public boolean isDrink() {
+        return this == DRINK;
+    }
 }

@@ -2,6 +2,7 @@ package christmas.domain;
 
 import christmas.util.Util;
 import java.util.List;
+import java.util.Objects;
 
 public class Order {
     private static final String ORDER_REGEX = "^[가-힣]+-[1-9][0-9]*$";
@@ -27,5 +28,41 @@ public class Order {
 
     private int findCount(List<String> separatedOrder) {
         return Integer.parseInt(separatedOrder.get(1));
+    }
+
+    public boolean isMain() {
+        return MenuCategory.from(menu).isMain();
+    }
+
+    public boolean isDessert() {
+        return MenuCategory.from(menu).isDessert();
+    }
+
+    public boolean isDrink() {
+        return MenuCategory.from(menu).isDrink();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Order order)) {
+            return false;
+        }
+        return menu == order.menu;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(menu);
+    }
+
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public int getCount() {
+        return count;
     }
 }
