@@ -42,6 +42,10 @@ public class Order {
         return MenuCategory.from(menu).isDrink();
     }
 
+    public int calculatePrice() {
+        return menu.calculatePrice(count);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -58,8 +62,8 @@ public class Order {
         return Objects.hash(menu);
     }
 
-    public Menu getMenu() {
-        return menu;
+    public String getMenuName() {
+        return menu.getName();
     }
 
     public int getCount() {

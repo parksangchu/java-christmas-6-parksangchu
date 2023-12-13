@@ -24,6 +24,10 @@ public enum Menu {
                 .orElseThrow(() -> new IllegalArgumentException(ErrorMessage.ORDER.getMessage()));
     }
 
+    public int calculatePrice(int count) {
+        return price * count;
+    }
+
     public String getName() {
         return name;
     }

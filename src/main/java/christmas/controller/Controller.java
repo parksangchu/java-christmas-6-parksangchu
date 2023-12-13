@@ -14,7 +14,7 @@ public class Controller {
         OutputView.printStartNotice();
         VisitDay visitDay = createVisitDay();
         Orders orders = createOrders();
-
+        OutputView.printOrders(orders.getOrders());
         EventManager eventManager = new EventManager(visitDay, orders);
     }
 
