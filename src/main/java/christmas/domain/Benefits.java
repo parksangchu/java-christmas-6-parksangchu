@@ -13,4 +13,11 @@ public class Benefits {
     public Map<Event, Integer> getBenefits() {
         return Collections.unmodifiableMap(benefits);
     }
+
+    public int calculateBenefitAmount() {
+        return benefits.values()
+                .stream()
+                .mapToInt(price -> price)
+                .sum();
+    }
 }

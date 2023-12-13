@@ -16,6 +16,9 @@ public class OutputView {
     private static final String GIFT_FORMAT = "%s %d개\n";
     private static final String BENEFITS_LABEL = "\n<혜택 내역>";
     private static final String BENEFITS_FORMAT = "%s: -%,d원\n";
+    private static final String TOTAL_BENEFIT_AMOUNT_LABEL = "\n<총혜택 금액>";
+    private static final String TOTAL_BENEFIT_AMOUNT_FORMAT = "-%,d원\n";
+    private static final String ZERO_WON = "0원";
 
     public static void printError(Exception e) {
         System.out.println(e.getMessage());
@@ -45,11 +48,19 @@ public class OutputView {
 
     public static void printBenefits(Map<Event, Integer> benefits) {
         System.out.println(BENEFITS_LABEL);
-        if (benefits.size() == 0) {
+        if (benefits.isEmpty()) {
             System.out.println(NONE);
             return;
         }
         benefits.forEach((key, value) -> System.out.printf(BENEFITS_FORMAT, key.getName(), value));
     }
-    
+
+    public static void printTotalBenefitAmount(int totalBenefitAmount) {
+        System.out.println(TOTAL_BENEFIT_AMOUNT_LABEL);
+        if (totalBenefitAmount == 0) {
+            System.out.println(ZERO_WON);
+            return;
+        }
+        System.out.printf(TOTAL_BENEFIT_AMOUNT_FORMAT, totalBenefitAmount);
+    }
 }

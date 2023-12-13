@@ -24,6 +24,7 @@ public class Controller {
         EventManager eventManager = new EventManager(visitDay, orders);
         Benefits benefits = eventManager.calculateBenefits();
         OutputView.printBenefits(benefits.getBenefits());
+        OutputView.printTotalBenefitAmount(Payment.calculateTotalBenefitAmount(benefits));
     }
 
     private VisitDay createVisitDay() {
@@ -42,7 +43,7 @@ public class Controller {
             try {
                 List<String> input = InputView.readOrders();
                 List<Order> orders = input.stream()
-                        .map(order -> new Order(order))
+                        .map(Order::new)
                         .collect(Collectors.toList());
                 return new Orders(orders);
             } catch (IllegalArgumentException e) {
