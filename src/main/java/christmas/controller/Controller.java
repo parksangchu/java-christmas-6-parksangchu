@@ -3,6 +3,7 @@ package christmas.controller;
 import christmas.domain.EventManager;
 import christmas.domain.Order;
 import christmas.domain.Orders;
+import christmas.domain.Payment;
 import christmas.domain.VisitDay;
 import christmas.view.InputView;
 import christmas.view.OutputView;
@@ -15,6 +16,7 @@ public class Controller {
         VisitDay visitDay = createVisitDay();
         Orders orders = createOrders();
         OutputView.printOrders(orders.getOrders());
+        OutputView.printTotalPrice(Payment.calculateTotalPrice(orders));
         EventManager eventManager = new EventManager(visitDay, orders);
     }
 

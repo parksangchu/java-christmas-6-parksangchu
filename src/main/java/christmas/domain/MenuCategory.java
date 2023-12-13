@@ -7,6 +7,7 @@ import static christmas.domain.Menu.CHOCO_CAKE;
 import static christmas.domain.Menu.CHRISTMAS_PASTA;
 import static christmas.domain.Menu.ICE_CREAM;
 import static christmas.domain.Menu.MUSHROOM_SOUP;
+import static christmas.domain.Menu.RED_WINE;
 import static christmas.domain.Menu.SEAFOOD_PASTA;
 import static christmas.domain.Menu.TAPAS;
 import static christmas.domain.Menu.T_BONE_STEAK;
@@ -19,7 +20,7 @@ public enum MenuCategory {
     APPETIZER(List.of(MUSHROOM_SOUP, TAPAS, CAESAR_SALAD)),
     MAIN(List.of(T_BONE_STEAK, BBQ_RIB, SEAFOOD_PASTA, CHRISTMAS_PASTA)),
     DESSERT(List.of(CHOCO_CAKE, ICE_CREAM)),
-    DRINK(List.of(ZERO_COKE, CHAMPAGNE));
+    DRINK(List.of(ZERO_COKE, RED_WINE, CHAMPAGNE));
 
     private final List<Menu> menus;
 

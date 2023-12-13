@@ -8,4 +8,5 @@ public class EventManager {
         this.visitDay = visitDay;
         this.orders = orders;
     }
+
 }
